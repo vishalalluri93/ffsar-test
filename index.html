@@ -24,12 +24,12 @@
 <section class="intro wrap"><span class="eyebrow">The estate</span><h2>Twenty venues. One <em>Address</em>.</h2><p>Weddings, corporate escapes, sport and 100 rooms.</p></section>
 
 <section class="strip-sec" aria-label="Pictures of the estate"><div class="strip spaces">
-<img class="w" src="assets/img/cor-hall-full-house-led-stage.jpg" alt="A full conference hall facing a lit stage and screen" loading="lazy">
-<img class="t" src="assets/img/est-garden-promenade-night.jpg" alt="A tiled garden promenade lit by bollards at night" loading="lazy">
-<img class="w" src="assets/img/wed-mehendi-lounge-pastel-hangings.jpg" alt="A pastel mehendi lounge on the lawn under hangings in the trees" loading="lazy">
-<img class="t" src="assets/img/cor-amphitheatre-crowd-sports-fest.jpg" alt="The amphitheatre steps packed for a company sports fest" loading="lazy">
-<img class="w" src="assets/img/hero.jpg" alt="A draped hall with a carved mandap" loading="lazy">
-<img class="t" src="assets/img/cor-poolside-anniversary-dinner-night.jpg" alt="An evening dinner set around the lit pool" loading="lazy">
+<img class="f-mandap" src="assets/img/hero.jpg" alt="A draped hall with a carved mandap" loading="lazy">
+<img class="f-hall" src="assets/img/cor-hall-full-house-led-stage.jpg" alt="A full conference hall facing a lit stage and screen" loading="lazy">
+<img class="f-path" src="assets/img/est-garden-promenade-night.jpg" alt="A tiled garden promenade lit by bollards at night" loading="lazy">
+<img class="f-lounge" src="assets/img/wed-mehendi-lounge-pastel-hangings.jpg" alt="A pastel mehendi lounge on the lawn under hangings in the trees" loading="lazy">
+<img class="f-pool" src="assets/img/cor-poolside-anniversary-dinner-night.jpg" alt="An evening dinner set around the lit pool" loading="lazy">
+<img class="f-amphi" src="assets/img/cor-amphitheatre-crowd-sports-fest.jpg" alt="The amphitheatre steps packed for a company sports fest" loading="lazy">
 </div><div class="scrollrail strip-rail"><i></i></div></section>
 
 <section class="paths wrap" aria-label="What brings you here"><ul>
@@ -101,9 +101,18 @@
  });
  document.querySelectorAll('.scrollrail').forEach(function(rail){
   var sp=rail.previousElementSibling; if(!sp||!sp.classList.contains('spaces'))return;
-  var fill=rail.querySelector('i');
-  function upd(){var sw=sp.scrollWidth||1; fill.style.width=Math.min(100,sp.clientWidth/sw*100)+'%'; fill.style.left=(sp.scrollLeft/sw*100)+'%';}
-  sp.addEventListener('scroll',upd); window.addEventListener('resize',upd); upd();
+  var fill=rail.querySelector('i'), cuts=[].slice.call(sp.children);
+  function upd(){var sw=sp.scrollWidth||1; fill.style.width=Math.min(100,sp.clientWidth/sw*100)+'%'; fill.style.left=(sp.scrollLeft/sw*100)+'%';
+   if(cuts.length){var b=sp.getBoundingClientRect();cuts.forEach(function(im){var r=im.getBoundingClientRect();im.classList.toggle('cut',Math.min(r.right,b.right)-Math.max(r.left,b.left)<Math.min(r.width,b.width)-2);});}}
+  function go(x,smooth){var r=rail.getBoundingClientRect();sp.scrollTo({left:(x-r.left-off)/r.width*sp.scrollWidth,behavior:smooth?'smooth':'auto'});}
+  var dr=false,off=0,x0=0;
+  rail.addEventListener('pointerdown',function(e){if(e.button!==0)return;var f=fill.getBoundingClientRect();x0=e.clientX;
+   if(e.clientX>=f.left&&e.clientX<=f.right){off=e.clientX-f.left;}else{off=f.width/2;go(e.clientX,true);}
+   dr=true;rail.classList.add('on');rail.setPointerCapture(e.pointerId);e.preventDefault();});
+  rail.addEventListener('pointermove',function(e){if(dr&&Math.abs(e.clientX-x0)>2)go(e.clientX,false);});
+  function end(){dr=false;rail.classList.remove('on');}
+  rail.addEventListener('pointerup',end);rail.addEventListener('pointercancel',end);
+  sp.addEventListener('scroll',upd); window.addEventListener('resize',upd); window.addEventListener('load',upd); upd();
  });
 })();
 </script>

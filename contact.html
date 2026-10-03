@@ -22,29 +22,59 @@
 <div class="hero-figure"><img src="assets/img/amn-convention-centre-canopy-sculpture.jpg" alt="The convention centre canopy and light sculpture"></div>
 <p class="sub">Tell us the occasion. We come back with availability and next steps.</p>
 <div class="hero-cta"><a class="btn" href="tel:+919676716888">Weddings &middot; +91 96767 16888</a><a class="btn" href="tel:+919988425777">Rooms &middot; +91 99884 25777</a></div>
-</section><section class="panel"><div class="contact wrap"><div class="grid">
-<div>
-<span class="eyebrow">Make an enquiry</span><h2>Send us the <em>details</em>.</h2>
-<form class="form" id="enquiry" novalidate>
-<div class="frow"><div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required></div><div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div></div>
-<div class="frow"><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div><div class="field"><label for="date">Preferred date</label><input id="date" name="date" type="date"></div></div>
-<div class="frow"><div class="field"><label for="type">Occasion</label><select id="type" name="type"><option>Wedding or event</option><option>Corporate escape</option><option>Day outing</option><option>Sports booking</option><option>Rooms &amp; stay</option></select></div><div class="field"><label for="guests">Guest count</label><input id="guests" name="guests" type="number" min="1" placeholder="e.g. 250"></div></div>
-<div class="field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us a little about what you are planning."></textarea></div>
-<button class="btn" type="submit">Send enquiry</button>
-<p class="note" role="status" id="enq-note">Prefer to talk? Call the weddings desk on <a href="tel:+919676716888" style="border-bottom:1px solid var(--line)">+91 96767 16888</a> &mdash; most enquiries are answered fastest by phone.</p>
-</form>
+</section><section class="panel" id="enquire"><div class="wrap">
+<div class="eq-head"><span class="eyebrow">Make an enquiry</span><h2>Send us the <em>details</em>.</h2><p>Prefer to talk? Call the weddings desk on <a href="tel:+919676716888">+91 96767 16888</a>.</p></div>
+<!-- Enquiry form (brief from the ERP session, 3 Oct 2026). Sends one POST to the ERP's enquiry address only:
+     no form service, no copy on this host, nothing in the page address. Fields carry no name attributes on purpose,
+     so a browser can never put the answers into a URL. -->
+<form class="eq" id="enquiry" novalidate onsubmit="return false">
+<fieldset class="eq-type" id="eq-type" aria-describedby="err-type"><legend>What kind of event?</legend>
+<div class="eq-chips">
+<label><input type="radio" name="eqtype" value="wedding"><span>Wedding</span></label>
+<label><input type="radio" name="eqtype" value="private"><span>Private event</span></label>
+<label><input type="radio" name="eqtype" value="corporate"><span>Corporate</span></label>
+<label><input type="radio" name="eqtype" value="institution"><span>Institution<small>school or college</small></span></label>
+<label><input type="radio" name="eqtype" value="sports"><span>Sports event</span></label>
+</div><p class="eq-err" id="err-type"></p></fieldset>
+<div class="eq-grid">
+<div class="eq-f"><label class="l" for="eq-name">Your name</label><input id="eq-name" type="text" autocomplete="name" aria-describedby="err-name"><p class="eq-err" id="err-name"></p></div>
+<div class="eq-f"><label class="l" for="eq-client" id="eq-client-label">Family / company / group name</label><input id="eq-client" type="text" autocomplete="off" aria-describedby="err-client"><p class="eq-err" id="err-client"></p></div>
+<div class="eq-f"><label class="l" for="eq-phone">Phone number</label><input id="eq-phone" type="tel" inputmode="tel" autocomplete="tel" value="+91 " aria-describedby="err-phone"><p class="eq-err" id="err-phone"></p></div>
 </div>
-<div>
+<p class="eq-more">Tell us more <span>(optional)</span></p>
+<div class="eq-grid">
+<div class="eq-col">
+<div class="eq-f"><label class="l" for="eq-email">Email</label><input id="eq-email" type="email" autocomplete="email" aria-describedby="err-email"><p class="eq-err" id="err-email"></p></div>
+<div class="eq-f"><label class="l" for="eq-occasion">What&rsquo;s the occasion?</label><input id="eq-occasion" type="text" autocomplete="off" placeholder="e.g. Sangeet, Annual offsite, Sports day"></div>
+<div class="eq-f"><label class="l" for="eq-guests">Roughly how many guests?</label><input id="eq-guests" type="number" inputmode="numeric" min="1" step="1" autocomplete="off" aria-describedby="err-guests"><p class="eq-err" id="err-guests"></p></div>
+</div>
+<div class="eq-f eq-dates"><span class="l" id="eq-dates-l">Dates</span>
+<div class="cal" id="eq-cal" role="group" aria-labelledby="eq-dates-l"></div>
+<div class="eq-picked" id="eq-picked" aria-live="polite"></div>
+<label class="eq-nd"><input type="checkbox" id="eq-nd"> Not decided yet</label>
+</div>
+<div class="eq-f eq-full"><label class="l" for="eq-message">Anything else we should know?</label><textarea id="eq-message" rows="3" maxlength="2000"></textarea></div>
+</div>
+<div class="eq-hp" aria-hidden="true"><label for="eq-website">Website</label><input id="eq-website" type="text" tabindex="-1" autocomplete="off"></div>
+<div class="eq-send">
+<button class="btn eq-btn" type="submit" id="eq-btn"><span class="eq-spin" aria-hidden="true"></span><span id="eq-btn-t">Send enquiry</span></button>
+<p class="eq-status" id="eq-status" role="alert"></p>
+<!-- PLACEHOLDER privacy line: wording goes to Firefox's lawyer; link it to the privacy notice once that page exists -->
+<p class="eq-privacy">Your details go only to the Firefox Sports &amp; Resorts team.</p>
+</div>
+</form>
+<!-- Thank-you wording from the ERP brief, second version (3 Oct 2026): received, what happens next, how to reach us sooner; no promised time -->
+<div class="eq-done" id="eq-done" hidden tabindex="-1"><span class="eyebrow">Enquiry sent</span><h2>Thank you<span id="eq-done-name"></span>.</h2><p>We&rsquo;ve received your enquiry. Our events team will contact you as soon as possible on <span id="eq-done-phone"></span>.</p><p>If you&rsquo;d like to reach us sooner, call <a href="tel:+919676716888">+91 96767 16888</a> (weddings) or <a href="tel:+919988435777">+91 99884 35777</a>.</p></div>
+</div></section><section class="wrap contact">
 <span class="eyebrow">Speak to a person</span><h2>Straight <em>through</em>.</h2>
-<div class="desks">
+<div class="desks desks--row">
 <div class="desk"><p class="eyebrow">Weddings &amp; events</p><a href="tel:+919676716888">+91 96767 16888</a></div>
 <div class="desk"><p class="eyebrow">Rooms &amp; stays</p><a href="tel:+919988425777">+91 99884 25777</a></div>
 <div class="desk"><p class="eyebrow">General enquiries</p><a href="tel:+919988435777">+91 99884 35777</a><a href="tel:+919988583777">+91 99885 83777</a></div>
 <div class="desk"><p class="eyebrow">Email</p><a href="mailto:gm@firefoxsportsandresorts.com">gm@firefoxsportsandresorts.com</a></div>
 <div class="desk"><p class="eyebrow">Visit the estate</p><span class="val">Sy. No. 127, Surangal Village,<br>Moinabad Mandal,<br>Hyderabad, Telangana 501504</span></div>
 </div>
-</div>
-</div></div></section><section class="wrap"><div class="where">
+</section><section class="wrap"><div class="where">
 <div class="fig"><img src="assets/img/est-shaded-garden-seating-circle.jpg" alt="A tiled seating circle with benches under a great shade tree" loading="lazy"></div>
 <div class="txt"><span class="eyebrow">Getting here</span><h2>20 minutes past the city.</h2><dl><dt>Address</dt><dd>Sy. No. 127, Surangal Village, Moinabad Mandal, Telangana 501504</dd><dt>Distance</dt><dd>20 km from Hyderabad</dd><dt>Parking</dt><dd>500+ cars on site</dd></dl><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Firefox+Sports+and+Resorts+Moinabad+Hyderabad" target="_blank" rel="noopener">Open in Maps</a></div>
 </div></section><section class="enquire"><div class="wrap"><h2>Tours most mornings.</h2><p>Come and walk it. Bring your guest list.</p><div class="cta"><a class="btn" href="tel:+919676716888">+91 96767 16888</a><a class="btn" href="mailto:gm@firefoxsportsandresorts.com">Email us</a></div></div></section></main>
@@ -70,18 +100,96 @@
  });
  document.querySelectorAll('.scrollrail').forEach(function(rail){
   var sp=rail.previousElementSibling; if(!sp||!sp.classList.contains('spaces'))return;
-  var fill=rail.querySelector('i');
-  function upd(){var sw=sp.scrollWidth||1; fill.style.width=Math.min(100,sp.clientWidth/sw*100)+'%'; fill.style.left=(sp.scrollLeft/sw*100)+'%';}
-  sp.addEventListener('scroll',upd); window.addEventListener('resize',upd); upd();
+  var fill=rail.querySelector('i'), cuts=[].slice.call(sp.children);
+  function upd(){var sw=sp.scrollWidth||1; fill.style.width=Math.min(100,sp.clientWidth/sw*100)+'%'; fill.style.left=(sp.scrollLeft/sw*100)+'%';
+   if(cuts.length){var b=sp.getBoundingClientRect();cuts.forEach(function(im){var r=im.getBoundingClientRect();im.classList.toggle('cut',Math.min(r.right,b.right)-Math.max(r.left,b.left)<Math.min(r.width,b.width)-2);});}}
+  function go(x,smooth){var r=rail.getBoundingClientRect();sp.scrollTo({left:(x-r.left-off)/r.width*sp.scrollWidth,behavior:smooth?'smooth':'auto'});}
+  var dr=false,off=0,x0=0;
+  rail.addEventListener('pointerdown',function(e){if(e.button!==0)return;var f=fill.getBoundingClientRect();x0=e.clientX;
+   if(e.clientX>=f.left&&e.clientX<=f.right){off=e.clientX-f.left;}else{off=f.width/2;go(e.clientX,true);}
+   dr=true;rail.classList.add('on');rail.setPointerCapture(e.pointerId);e.preventDefault();});
+  rail.addEventListener('pointermove',function(e){if(dr&&Math.abs(e.clientX-x0)>2)go(e.clientX,false);});
+  function end(){dr=false;rail.classList.remove('on');}
+  rail.addEventListener('pointerup',end);rail.addEventListener('pointercancel',end);
+  sp.addEventListener('scroll',upd); window.addEventListener('resize',upd); window.addEventListener('load',upd); upd();
  });
 })();
 </script><script>
-(function(){var f=document.getElementById('enquiry');if(!f)return;var note=document.getElementById('enq-note');
-f.addEventListener('submit',function(e){e.preventDefault();var g=function(id){var el=document.getElementById(id);return el&&el.value?el.value.trim():'';};
-if(!g('name')||!g('phone')){note.textContent='Please add your name and a phone number so we can come back to you.';return;}
-var lines=['Name: '+g('name'),'Phone: '+g('phone'),'Email: '+g('email'),'Occasion: '+g('type'),'Preferred date: '+g('date'),'Guest count: '+g('guests'),'',g('message'),'','Sent from the Firefox Sports & Resorts website'];
-var subject='Enquiry — '+(g('type')||'Firefox Sports & Resorts')+(g('date')?' — '+g('date'):'');
-note.innerHTML='Opening your email app with the details filled in. If nothing happens, call <a href="tel:+919676716888" style="border-bottom:1px solid var(--line)">+91 96767 16888</a>.';
-window.location.href='mailto:gm@firefoxsportsandresorts.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));});})();
+(function(){
+ /* ERP enquiry address. For now Firefox's TEST system, which accepts sends from http://localhost and, from 4 Oct 2026,
+    from the test site https://vishalalluri93.github.io/ffsar-test/ (ERP brief, 3 Oct 2026). Swap in the live address the ERP gives before this goes to production. No key is needed. */
+ var CONFIG={endpoint:'https://erp-ivcnrdhpia-el.a.run.app/enquiry'};
+ var f=document.getElementById('enquiry'); if(!f)return;
+ var $=function(id){return document.getElementById(id);};
+ var t0=Date.now(), MIN_MS=4000, sending=false;
+ var LABEL={wedding:'Family name',private:'Family name',corporate:'Company name',institution:'School / college name',sports:'Team or group name'};
+ var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+ var DOW=['Su','Mo','Tu','We','Th','Fr','Sa'], DAY=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+ function type(){var r=f.querySelector('input[name=eqtype]:checked');return r?r.value:'';}
+ function val(id){return $(id).value.trim();}
+ function err(id,msg){var el=$('err-'+id);el.textContent=msg||'';var inp=id==='type'?$('eq-type'):$('eq-'+id);if(msg)inp.setAttribute('aria-invalid','true');else inp.removeAttribute('aria-invalid');}
+ f.querySelectorAll('input[name=eqtype]').forEach(function(r){r.addEventListener('change',function(){$('eq-client-label').textContent=LABEL[type()]||'Family / company / group name';err('type');});});
+ ['name','client','phone','email','guests'].forEach(function(id){$('eq-'+id).addEventListener('input',function(){err(id);});});
+
+ /* calendar: several days, need not run together. Day keys are built in LOCAL time (yyyy-MM-dd). */
+ var picked={}, today=new Date(); today.setHours(0,0,0,0);
+ var first=new Date(today.getFullYear(),today.getMonth(),1), view=new Date(first), last=new Date(today.getFullYear()+2,today.getMonth(),1);
+ function key(y,m,d){return y+'-'+('0'+(m+1)).slice(-2)+'-'+('0'+d).slice(-2);}
+ function nice(k){var p=k.split('-'),d=new Date(+p[0],p[1]-1,+p[2]);return DAY[d.getDay()].slice(0,3)+' '+d.getDate()+' '+MON[d.getMonth()].slice(0,3)+(d.getFullYear()!==today.getFullYear()?' '+d.getFullYear():'');}
+ function draw(focusKey){
+  var y=view.getFullYear(),m=view.getMonth(),lead=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate(),i,h;
+  h='<div class="cal-h"><button type="button" data-nav="-1" aria-label="Previous month"'+(view<=first?' disabled':'')+'>&larr;</button><b aria-live="polite">'+MON[m]+' '+y+'</b><button type="button" data-nav="1" aria-label="Next month"'+(view>=last?' disabled':'')+'>&rarr;</button></div><div class="cal-g">';
+  for(i=0;i<7;i++)h+='<span class="dow" aria-hidden="true">'+DOW[i]+'</span>';
+  for(i=0;i<lead;i++)h+='<span></span>';
+  for(i=1;i<=n;i++){var dt=new Date(y,m,i),k=key(y,m,i);
+   h+='<button type="button" data-k="'+k+'" aria-pressed="'+(picked[k]?'true':'false')+'" aria-label="'+DAY[dt.getDay()]+' '+i+' '+MON[m]+' '+y+'"'+(dt<today?' disabled':'')+(dt.getTime()===today.getTime()?' class="today"':'')+'>'+i+'</button>';}
+  $('eq-cal').innerHTML=h+'</div>';
+  if(focusKey){var b=$('eq-cal').querySelector('[data-k="'+focusKey+'"],[data-nav="'+focusKey+'"]');if(b&&!b.disabled)b.focus();}
+ }
+ function chips(){$('eq-picked').innerHTML=Object.keys(picked).sort().map(function(k){return '<button type="button" data-k="'+k+'" aria-label="Remove '+nice(k)+'">'+nice(k)+' <span aria-hidden="true">&times;</span></button>';}).join('');}
+ $('eq-cal').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;
+  if(b.dataset.nav){view=new Date(view.getFullYear(),view.getMonth()+(+b.dataset.nav),1);draw(b.dataset.nav);return;}
+  if(picked[b.dataset.k])delete picked[b.dataset.k];else picked[b.dataset.k]=1;draw(b.dataset.k);chips();});
+ $('eq-picked').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;delete picked[b.dataset.k];draw();chips();});
+ $('eq-nd').addEventListener('change',function(){var off=this.checked;if(off){picked={};chips();draw();}$('eq-cal').classList.toggle('off',off);
+  $('eq-cal').querySelectorAll('button').forEach(function(b){b.tabIndex=off?-1:0;});});
+ draw();
+
+ function phone(v){var s=v.replace(/[\s\-().]/g,'');if(/^0?[6-9]\d{9}$/.test(s))s='+91'+s.slice(-10);else if(/^91[6-9]\d{9}$/.test(s))s='+'+s;return s;}
+ function phoneOk(s){return /^\+91[6-9]\d{9}$/.test(s)||/^\+(?!91)[1-9]\d{6,14}$/.test(s);}
+
+ function check(){var bad=[],t=type(),lab=(LABEL[t]||'family, company or group name').toLowerCase();
+  ['type','name','client','phone','email','guests'].forEach(function(id){err(id);});
+  if(!t){err('type','Choose the kind of event.');bad.push($('eq-type').querySelector('input'));}
+  if(!val('eq-name')){err('name','Add your name.');bad.push($('eq-name'));}
+  if(!val('eq-client')){err('client','Add the '+lab+'.');bad.push($('eq-client'));}
+  if(!phoneOk(phone(val('eq-phone')))){err('phone','Check the phone number. An Indian mobile number has 10 digits after +91.');bad.push($('eq-phone'));}
+  var em=val('eq-email');if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){err('email','Check the email address, or leave it blank.');bad.push($('eq-email'));}
+  var g=val('eq-guests');if(g&&(!/^\d{1,6}$/.test(g)||+g<1)){err('guests','Enter the number of guests as a whole number.');bad.push($('eq-guests'));}
+  if(bad.length)bad[0].focus();return !bad.length;}
+
+ function payload(){var p={event_type:type(),contact_name:val('eq-name'),client_name:val('eq-client'),phone:phone(val('eq-phone')),
+   email:val('eq-email'),occasion:val('eq-occasion'),event_days:Object.keys(picked).sort(),guests:val('eq-guests')?parseInt(val('eq-guests'),10):'',
+   message:val('eq-message'),source:'Website enquiry',page:location.origin+location.pathname};
+  Object.keys(p).forEach(function(k){if(p[k]===''||(Array.isArray(p[k])&&!p[k].length))delete p[k];});
+  p.hp=$('eq-website').value;return p;}
+
+ function busy(on){sending=on;f.classList.toggle('sending',on);$('eq-btn').disabled=on;$('eq-btn-t').textContent=on?'Sending…':'Send enquiry';}
+ function spaced(ph){var m=/^\+91(\d{5})(\d{5})$/.exec(ph);return m?'+91 '+m[1]+' '+m[2]:ph;}
+ function done(p){$('eq-done-name').textContent=', '+p.contact_name;$('eq-done-phone').textContent=spaced(p.phone);
+  f.hidden=true;var d=$('eq-done');d.hidden=false;d.focus();d.scrollIntoView({block:'center'});}
+ function fail(){busy(false);$('eq-status').innerHTML='Something went wrong &mdash; please try again or <a href="tel:+919676716888">call us</a>.';}
+
+ f.addEventListener('submit',function(e){e.preventDefault();if(sending)return;$('eq-status').textContent='';
+  if(!check())return;var p=payload();busy(true);
+  setTimeout(function(){
+   p.ms=Date.now()-t0;
+   var ac=window.AbortController?new AbortController():null,to=setTimeout(function(){if(ac)ac.abort();},20000);
+   fetch(CONFIG.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p),credentials:'omit',cache:'no-store',signal:ac?ac.signal:undefined})
+    .then(function(r){return r.json();}).then(function(j){clearTimeout(to);if(j&&j.ok===true)done(p);else fail();})
+    .catch(function(){clearTimeout(to);fail();});
+  },Math.max(0,MIN_MS-(Date.now()-t0)));
+ });
+})();
 </script>
 </body></html>

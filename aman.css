@@ -1,7 +1,7 @@
 
 :root{
   --cream:#F1EBDF; --cream-deep:#EDE6D6; --ink:#1E2932; --ink-soft:#3A444E;
-  --card:#2F3942; --mist:#6A7480; --gold:#B79A5E; --label:#9C855B; --line:#E1DBCE; --gilt:#A88A50;
+  --card:#2F3942; --mist:#6A7480; --gold:#B79A5E; --label:#9C855B; --line:#E1DBCE; --gilt:#A88A50; --err:#9B3B2E;
   --serif:'Cormorant Garamond',Georgia,serif; --sans:'Mulish',-apple-system,'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box}
@@ -92,6 +92,9 @@ section{padding-block:clamp(2.4rem,4.2vw,3.7rem)}
 /* drag carousel */
 .spaces{display:flex;gap:clamp(.9rem,1.6vw,1.35rem);overflow-x:auto;padding-bottom:.7rem;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
 .spaces::-webkit-scrollbar{display:none}
+/* Home only: any frame cut off at either edge fades a little, to show there is more (3 Oct 2026; Vishal kept it to Home) */
+.p-home .spaces>*{transition:opacity .45s ease}
+.p-home .spaces>.cut{opacity:.5}
 .spaces figure{flex:0 0 clamp(19rem,25vw,23rem);margin:0}
 .spaces img{width:100%;height:clamp(17rem,23vw,21rem);object-fit:cover}
 .spaces .cap{padding-top:.85rem}
@@ -137,14 +140,6 @@ section{padding-block:clamp(2.4rem,4.2vw,3.7rem)}
 .contact .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,4vw,3.5rem)}
 .contact .eyebrow{display:block;margin-bottom:.5rem}
 .contact h2{margin-bottom:1.2rem}
-.form .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
-.form .field{display:flex;flex-direction:column}
-.form label{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mist);margin-bottom:.35rem}
-.form input,.form select,.form textarea{font-family:var(--sans);font-size:.92rem;color:var(--ink);background:#fff8ee;border:1px solid var(--line);padding:.7rem .8rem;border-radius:0}
-.form textarea{min-height:120px;resize:vertical;margin-bottom:1rem}
-.form .full{margin-bottom:1rem}
-.form button{cursor:pointer;background:transparent}
-.form .note{font-size:.82rem;color:var(--ink-soft);margin-top:1rem}
 .desks{display:grid;gap:1.2rem}
 .desk .eyebrow{color:var(--label);margin-bottom:.25rem}
 .desk a{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--ink)}
@@ -174,7 +169,6 @@ footer.foot{border-top:1px solid var(--line);padding-block:clamp(2.4rem,4vw,3.4r
   .pair2,.duo,.duo.flip,.where,.contact .grid{grid-template-columns:1fr;gap:1.6rem}
   .duo .fig,.duo.flip .fig{order:0}
   .occ-grid,.facts ul{grid-template-columns:1fr}
-  .form .frow{grid-template-columns:1fr}
   .foot .cols{grid-template-columns:1fr 1fr}
   .spaces figure{flex:0 0 76vw}
   .spaces img{height:clamp(16rem,66vw,22rem)}
@@ -192,8 +186,9 @@ footer.foot{border-top:1px solid var(--line);padding-block:clamp(2.4rem,4vw,3.4r
 .trio3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,2.6vw,2.2rem)}
 .trio3 .feat .fig img{height:clamp(13rem,17vw,15.5rem)}
 .trio3 .feat .cap h3{font-size:clamp(1.25rem,1.6vw,1.5rem)}
-.scrollrail{position:relative;height:1px;background:var(--line);margin-top:clamp(1.1rem,2vw,1.6rem)}
-.scrollrail i{position:absolute;top:0;left:0;height:100%;background:var(--ink)}
+.scrollrail{position:relative;height:1.5rem;margin-top:calc(clamp(1.1rem,2vw,1.6rem) - .75rem);margin-bottom:-.75rem;cursor:pointer;touch-action:none;background:linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat}
+.scrollrail i{position:absolute;top:50%;left:0;height:1px;transform:translateY(-50%);background:var(--ink);transition:height .2s ease}
+.scrollrail:hover i,.scrollrail.on i{height:3px}
 @media(max-width:820px){ .pair--6040,.trio3{grid-template-columns:1fr} }
 
 /* --- doc round 2: dimensions --- */
@@ -329,13 +324,18 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .site2 .intro{text-align:center;padding-top:clamp(1.2rem,2.4vw,2rem);padding-bottom:clamp(1.4rem,2.6vw,2.2rem)}
 .site2 .intro .eyebrow{display:block;margin-bottom:.8rem}
 .site2 .intro p{margin:.8rem auto 0;max-width:52ch;font-size:.95rem}
-/* gallery strip: mixed wide and tall frames, edge to edge, drag to scroll */
+/* gallery strip: wide (a) and tall (b) frames in an irregular a-a-b-a-a-b rhythm, each a slightly different size,
+   all bottom-aligned, boxed to the page edges (3 Oct 2026). --w/--h are in strip units (--u) */
 .strip-sec{padding-block:0 clamp(2.4rem,4vw,3.4rem)}
-.strip{--pad:clamp(1.3rem,4.5vw,3.4rem);gap:clamp(.7rem,1.2vw,1rem);padding-inline:max(var(--pad),calc((100vw - 1160px)/2 + var(--pad))) var(--pad);align-items:flex-end}
-.strip img{flex:0 0 auto;height:clamp(16rem,30vw,26rem);object-fit:cover;filter:saturate(.85) sepia(.03) contrast(.99) brightness(1.02)}
-.strip img.w{width:clamp(20rem,38vw,34rem)}
-.strip img.t{width:clamp(12rem,21vw,19rem);height:clamp(19rem,36vw,31rem)}
-.strip-rail{--pad:clamp(1.3rem,4.5vw,3.4rem);margin-inline:auto;width:min(calc(100% - 2*var(--pad)),calc(1160px - 2*var(--pad)))}
+.strip,.strip-rail{--pad:clamp(1.3rem,4.5vw,3.4rem);margin-inline:auto;width:min(calc(100% - 2*var(--pad)),calc(1160px - 2*var(--pad)))}
+.strip{--u:clamp(.6rem,.9vw,.8rem);gap:clamp(.7rem,1.2vw,1rem);align-items:flex-end}
+.strip img{flex:0 0 auto;width:calc(var(--w,28)*var(--u));height:calc(var(--h,21)*var(--u));object-fit:cover;filter:saturate(.85) sepia(.03) contrast(.99) brightness(1.02)}
+.strip .f-mandap{--w:34;--h:26}
+.strip .f-hall{--w:32;--h:25}
+.strip .f-path{--w:19;--h:31}
+.strip .f-lounge{--w:35;--h:25}
+.strip .f-pool{--w:33;--h:26.5}
+.strip .f-amphi{--w:21;--h:29}
 /* alternating near-white panels instead of lines and boxes */
 .site2 .panel{background:var(--panel)}
 .site2 .figures{border:0;background:transparent;padding-block:clamp(2.2rem,3.6vw,3rem)}
@@ -365,8 +365,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
   .site2 .duo--flag,.site2 .duo--flag.flip,.site2 .duo--story{grid-template-columns:1fr}
   .site2 .duo--flag.flip .txt{text-align:left}
   .site2 .duo--flag.flip .txt .body{margin-left:0}
-  .strip img.w{width:78vw;height:62vw}
-  .strip img.t{width:52vw;height:70vw}
+  .strip{--u:min(2.3vw,.8rem)}
 }
 /* "what brings you here" paths — four equal ways in (3 Oct 2026) */
 .site2 .paths{padding-top:0;padding-bottom:clamp(2rem,3.4vw,2.8rem)}
@@ -407,9 +406,75 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .story-block h2{font-size:clamp(1.7rem,2.6vw,2.3rem);margin-bottom:1rem}
 .story-block p{font-size:1rem;line-height:1.75;margin-inline:auto;max-width:54ch}
 /* forms on redesigned pages: 16px fields so phones do not zoom, readable labels */
-.site2 .form input,.site2 .form select,.site2 .form textarea{font-size:1rem;background:#fff}
-.site2 .form label{font-size:.66rem;color:var(--mist)}
 .site2 .desk .eyebrow{color:var(--label)}
 .site2 .spaces .cap .m,.site2 .where dt,.site2 .statgrid .from,.site2 .foot h4,.site2 .facts li span{font-size:.68rem}
 .site2 .foot h4,.site2 .where dt,.site2 .statgrid .from{color:var(--mist)}
 @media(max-width:820px){ .site2 .statgrid{grid-template-columns:1fr 1fr!important;row-gap:1.6rem} }
+/* phones: carousel cards back to their intended 76vw — a later desktop size rule had been overriding it (3 Oct 2026) */
+@media(max-width:820px){ .spaces figure,.seasonal .spaces figure.wide{flex:0 0 76vw} }
+/* enquiry form (Contact) — one card, phone first; brief from the ERP session, 3 Oct 2026 */
+.eq-head{max-width:40rem;margin-bottom:clamp(1.2rem,2.4vw,1.8rem)}
+.eq-head .eyebrow{display:block;margin-bottom:.5rem}
+.eq-head h2{margin-bottom:.6rem}
+.eq-head a{border-bottom:1px solid var(--line)}
+.eq,.eq-done{background:var(--cream);border:1px solid var(--line);padding:clamp(1.2rem,3.2vw,2.6rem)}
+.eq fieldset{border:0;margin:0;padding:0;min-width:0}
+.eq legend,.eq .l{display:block;padding:0;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mist);margin-bottom:.5rem}
+.eq-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.eq-chips label{position:relative;cursor:pointer}
+.eq-chips input{position:absolute;inset:0;margin:0;opacity:0;cursor:pointer}
+.eq-chips span{display:flex;flex-direction:column;justify-content:center;min-height:50px;padding:.35rem 1.15rem;border:1px solid var(--line);background:#fff;font-size:.92rem;line-height:1.2;color:var(--ink);transition:background .2s,border-color .2s,color .2s}
+.eq-chips small{font-size:.68rem;color:var(--mist)}
+.eq-chips label:hover span{border-color:var(--ink)}
+.eq-chips input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.eq-chips input:checked+span small{color:var(--line)}
+.eq-chips input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
+.eq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem clamp(1rem,2.4vw,1.8rem);margin-top:1.4rem;align-items:start}
+.eq-f{display:flex;flex-direction:column;min-width:0}
+.eq-col{display:grid;gap:1.1rem;min-width:0}
+.eq-full{grid-column:1/-1}
+.eq input[type=text],.eq input[type=tel],.eq input[type=email],.eq input[type=number],.eq textarea{width:100%;min-height:50px;font:400 1rem/1.4 var(--sans);color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:0;padding:.8rem .9rem}
+.eq textarea{min-height:110px;resize:vertical}
+.eq input:focus,.eq textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.eq [aria-invalid=true]{border-color:var(--err)}
+.eq fieldset[aria-invalid=true] .eq-chips span{border-color:var(--err)}
+.eq-err{margin:.35rem 0 0;font-size:.82rem;color:var(--err)}
+.eq-err:empty{display:none}
+.eq-more{margin:2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);font-family:var(--serif);font-size:1.2rem;color:var(--ink)}
+.eq-more span{color:var(--mist)}
+.cal{border:1px solid var(--line);background:#fff;padding:.5rem .7rem .7rem;transition:opacity .2s}
+.cal.off{opacity:.35;pointer-events:none}
+.cal-h{display:flex;align-items:center;justify-content:space-between}
+.cal-h b{font-family:var(--serif);font-weight:400;font-size:1.15rem}
+.cal-h button{width:44px;height:44px;border:0;background:transparent;color:var(--ink);font-size:1.05rem;cursor:pointer}
+.cal-h button:disabled{opacity:.25;cursor:default}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal-g .dow{font-size:.62rem;font-weight:700;letter-spacing:.1em;color:var(--mist);padding:.25rem 0}
+.cal-g button{min-height:42px;border:0;background:transparent;font:500 .92rem var(--sans);color:var(--ink);cursor:pointer;font-variant-numeric:tabular-nums}
+.cal-g button:hover{background:var(--panel)}
+.cal-g button.today{box-shadow:inset 0 -2px 0 var(--gold)}
+.cal-g button[aria-pressed=true]{background:var(--ink);color:var(--cream)}
+.cal-g button:disabled{color:#C9C2B4;background:transparent;cursor:default}
+.cal-g button:focus-visible,.cal-h button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.eq-picked{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.eq-picked:empty{display:none}
+.eq-picked button{font:500 .82rem var(--sans);color:var(--ink);background:var(--panel);border:1px solid var(--line);padding:.4rem .65rem;min-height:36px;cursor:pointer}
+.eq-nd{display:flex;align-items:center;gap:.6rem;min-height:44px;margin-top:.3rem;font-size:.92rem;color:var(--ink);cursor:pointer}
+.eq-nd input{width:20px;height:20px;margin:0;accent-color:var(--ink)}
+.eq-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.eq-send{display:flex;flex-direction:column;align-items:flex-start;gap:.8rem;margin-top:1.8rem}
+.eq-btn{display:inline-flex;align-items:center;gap:.7rem;min-height:52px;padding-inline:2.2rem;background:transparent;cursor:pointer}
+.eq-btn:disabled{cursor:progress;opacity:.7}
+.eq-spin{display:none;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:eqspin .8s linear infinite}
+.eq.sending .eq-spin{display:inline-block}
+@keyframes eqspin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.eq-spin{animation-duration:2.5s}}
+.eq-status{margin:0;font-size:.9rem;color:var(--err);max-width:52ch}
+.eq-status:empty{display:none}
+.eq-status a{border-bottom:1px solid currentColor}
+.eq-privacy{margin:0;font-size:.8rem;color:var(--mist)}
+.eq-done{text-align:center;outline:none}
+.eq-done .eyebrow{display:block;margin-bottom:.6rem}
+.eq-done p{margin:.7rem auto 0;max-width:40ch}
+.desks--row{grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:1.4rem 2rem}
+@media(max-width:820px){ .eq-grid{grid-template-columns:1fr} .eq-chips label{flex:1 1 calc(50% - .25rem)} }

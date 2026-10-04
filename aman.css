@@ -307,8 +307,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 
 /* --- home hero video, treatment B (framed in the page): headline, eyebrow, then the video --- */
 .hero-video{background:var(--ink)}
-.hero-video video{display:block;width:100%;height:clamp(17rem,44vw,32rem);object-fit:cover}
-@media(max-width:820px){ .hero-video video{height:clamp(14rem,60vw,22rem)} }
+.hero-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}   /* the video's own 16:9 shape, never cropped (Vishal, 4 Oct 2026) */
 
 /* --- Look-and-feel pass, 2–3 Oct 2026 (approved on Home by Vishal 3 Oct). Pages carry body class "site2" once redesigned --- */
 .site2{--label:#7A6236;--mist:#545E69;--panel:#F8F4EC}

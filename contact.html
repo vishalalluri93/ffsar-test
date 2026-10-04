@@ -5,7 +5,7 @@
 <meta name="description" content="Enquire about weddings, corporate escapes, day outings, sport and rooms at Firefox Sports & Resorts, Moinabad — 20 km from Hyderabad. Weddings +91 96767 16888.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="aman.css">
+<link rel="stylesheet" href="aman.css"><link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png"><link rel="icon" type="image/png" sizes="48x48" href="assets/icons/favicon-48.png"><link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png"><link rel="manifest" href="site.webmanifest"><meta name="apple-mobile-web-app-title" content="Firefox"><meta name="theme-color" content="#F1EBDF">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":["LocalBusiness","EventVenue"],"name":"Firefox Sports & Resorts","description":"A 15-acre events estate at Moinabad, 20 km from Hyderabad — weddings and corporate escapes, with 100 rooms and a large indoor sports complex on site.","address":{"@type":"PostalAddress","streetAddress":"Sy. No. 127, Surangal Village","addressLocality":"Moinabad","addressRegion":"Telangana","postalCode":"501504","addressCountry":"IN"},"telephone":"+91 96767 16888","email":"gm@firefoxsportsandresorts.com"}
 </script>
@@ -28,32 +28,27 @@
      no form service, no copy on this host, nothing in the page address. Fields carry no name attributes on purpose,
      so a browser can never put the answers into a URL. -->
 <form class="eq" id="enquiry" novalidate onsubmit="return false">
-<fieldset class="eq-type" id="eq-type" aria-describedby="err-type"><legend>What kind of event?</legend>
-<div class="eq-chips">
-<label><input type="radio" name="eqtype" value="wedding"><span>Wedding</span></label>
-<label><input type="radio" name="eqtype" value="private"><span>Private event</span></label>
-<label><input type="radio" name="eqtype" value="corporate"><span>Corporate</span></label>
-<label><input type="radio" name="eqtype" value="institution"><span>Institution<small>school or college</small></span></label>
-<label><input type="radio" name="eqtype" value="sports"><span>Sports event</span></label>
-</div><p class="eq-err" id="err-type"></p></fieldset>
+<div class="eq-grid">
+<div class="eq-f"><label class="l" for="eq-type">What kind of event?</label><select id="eq-type" aria-describedby="err-type"><option value="" selected disabled>Choose one</option><option value="wedding">Wedding</option><option value="private">Private event</option><option value="corporate">Corporate</option><option value="institution">Institution (school or college)</option><option value="sports">Sports event</option></select><p class="eq-err" id="err-type"></p></div>
+</div>
 <div class="eq-grid">
 <div class="eq-f"><label class="l" for="eq-name">Your name</label><input id="eq-name" type="text" autocomplete="name" aria-describedby="err-name"><p class="eq-err" id="err-name"></p></div>
-<div class="eq-f"><label class="l" for="eq-client" id="eq-client-label">Family / company / group name</label><input id="eq-client" type="text" autocomplete="off" aria-describedby="err-client"><p class="eq-err" id="err-client"></p></div>
+<div class="eq-f"><label class="l" for="eq-client" id="eq-client-label">Company / group name</label><input id="eq-client" type="text" autocomplete="off" aria-describedby="err-client"><p class="eq-err" id="err-client"></p></div>
 <div class="eq-f"><label class="l" for="eq-phone">Phone number</label><input id="eq-phone" type="tel" inputmode="tel" autocomplete="tel" value="+91 " aria-describedby="err-phone"><p class="eq-err" id="err-phone"></p></div>
-</div>
-<p class="eq-more">Tell us more <span>(optional)</span></p>
-<div class="eq-grid">
-<div class="eq-col">
-<div class="eq-f"><label class="l" for="eq-email">Email</label><input id="eq-email" type="email" autocomplete="email" aria-describedby="err-email"><p class="eq-err" id="err-email"></p></div>
-<div class="eq-f"><label class="l" for="eq-occasion">What&rsquo;s the occasion?</label><input id="eq-occasion" type="text" autocomplete="off" placeholder="e.g. Sangeet, Annual offsite, Sports day"></div>
 <div class="eq-f"><label class="l" for="eq-guests">Roughly how many guests?</label><input id="eq-guests" type="number" inputmode="numeric" min="1" step="1" autocomplete="off" aria-describedby="err-guests"><p class="eq-err" id="err-guests"></p></div>
 </div>
+<div class="eq-grid eq-split">
 <div class="eq-f eq-dates"><span class="l" id="eq-dates-l">Dates</span>
 <div class="cal" id="eq-cal" role="group" aria-labelledby="eq-dates-l"></div>
 <div class="eq-picked" id="eq-picked" aria-live="polite"></div>
 <label class="eq-nd"><input type="checkbox" id="eq-nd"> Not decided yet</label>
 </div>
-<div class="eq-f eq-full"><label class="l" for="eq-message">Anything else we should know?</label><textarea id="eq-message" rows="3" maxlength="2000"></textarea></div>
+<div class="eq-col">
+<p class="eq-more">Tell us more <span>(optional)</span></p>
+<div class="eq-f"><label class="l" for="eq-email">Email</label><input id="eq-email" type="email" autocomplete="email" aria-describedby="err-email"><p class="eq-err" id="err-email"></p></div>
+<div class="eq-f"><label class="l" for="eq-occasion">What&rsquo;s the occasion?</label><input id="eq-occasion" type="text" autocomplete="off" placeholder="e.g. Sangeet, Annual offsite, Sports day"></div>
+<div class="eq-f eq-msg"><label class="l" for="eq-message">Anything else we should know?</label><textarea id="eq-message" rows="3" maxlength="2000"></textarea></div>
+</div>
 </div>
 <div class="eq-hp" aria-hidden="true"><label for="eq-website">Website</label><input id="eq-website" type="text" tabindex="-1" autocomplete="off"></div>
 <div class="eq-send">
@@ -125,10 +120,10 @@
  var LABEL={wedding:'Family name',private:'Family name',corporate:'Company name',institution:'School / college name',sports:'Team or group name'};
  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
  var DOW=['Su','Mo','Tu','We','Th','Fr','Sa'], DAY=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
- function type(){var r=f.querySelector('input[name=eqtype]:checked');return r?r.value:'';}
+ function type(){return $('eq-type').value||'';}
  function val(id){return $(id).value.trim();}
- function err(id,msg){var el=$('err-'+id);el.textContent=msg||'';var inp=id==='type'?$('eq-type'):$('eq-'+id);if(msg)inp.setAttribute('aria-invalid','true');else inp.removeAttribute('aria-invalid');}
- f.querySelectorAll('input[name=eqtype]').forEach(function(r){r.addEventListener('change',function(){$('eq-client-label').textContent=LABEL[type()]||'Family / company / group name';err('type');});});
+ function err(id,msg){var el=$('err-'+id);el.textContent=msg||'';var inp=$('eq-'+id);if(msg)inp.setAttribute('aria-invalid','true');else inp.removeAttribute('aria-invalid');}
+ $('eq-type').addEventListener('change',function(){$('eq-client-label').textContent=LABEL[type()]||'Company / group name';err('type');});
  ['name','client','phone','email','guests'].forEach(function(id){$('eq-'+id).addEventListener('input',function(){err(id);});});
 
  /* calendar: several days, need not run together. Day keys are built in LOCAL time (yyyy-MM-dd). */
@@ -158,9 +153,9 @@
  function phone(v){var s=v.replace(/[\s\-().]/g,'');if(/^0?[6-9]\d{9}$/.test(s))s='+91'+s.slice(-10);else if(/^91[6-9]\d{9}$/.test(s))s='+'+s;return s;}
  function phoneOk(s){return /^\+91[6-9]\d{9}$/.test(s)||/^\+(?!91)[1-9]\d{6,14}$/.test(s);}
 
- function check(){var bad=[],t=type(),lab=(LABEL[t]||'family, company or group name').toLowerCase();
+ function check(){var bad=[],t=type(),lab=(LABEL[t]||'company or group name').toLowerCase();
   ['type','name','client','phone','email','guests'].forEach(function(id){err(id);});
-  if(!t){err('type','Choose the kind of event.');bad.push($('eq-type').querySelector('input'));}
+  if(!t){err('type','Choose the kind of event.');bad.push($('eq-type'));}
   if(!val('eq-name')){err('name','Add your name.');bad.push($('eq-name'));}
   if(!val('eq-client')){err('client','Add the '+lab+'.');bad.push($('eq-client'));}
   if(!phoneOk(phone(val('eq-phone')))){err('phone','Check the phone number. An Indian mobile number has 10 digits after +91.');bad.push($('eq-phone'));}

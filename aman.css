@@ -9,7 +9,8 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1160px;margin-inline:auto;padding-inline:clamp(1.3rem,4.5vw,3.4rem)}
+/* width and side margins matched to aman.com: 1440px column, ~25px gutter (4 Oct 2026) */
+.wrap{max-width:1440px;margin-inline:auto;padding-inline:clamp(1.3rem,2vw,1.55rem)}
 .skip{position:absolute;left:-999px}
 .eyebrow{font-size:.63rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
 h1,h2,h3{font-family:var(--serif);font-weight:300;margin:0;letter-spacing:.01em;color:var(--ink)}
@@ -287,7 +288,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
   .burger span{display:block;width:24px;height:2px;background:var(--ink);transition:.3s}
   nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;padding:.4rem 0;background:rgba(241,235,223,.98);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--line);box-shadow:0 10px 24px rgba(0,0,0,.08)}
   .navtoggle:checked ~ nav{display:flex}
-  nav a{padding:.95rem clamp(1.3rem,4.5vw,3.4rem);font-size:.82rem;letter-spacing:.14em;border-bottom:1px solid var(--line)}
+  nav a{padding:.95rem clamp(1.3rem,2vw,1.55rem);font-size:.82rem;letter-spacing:.14em;border-bottom:1px solid var(--line)}
   nav a:last-child{border-bottom:none}
   .enq-m{display:block;color:var(--gold)}
   .navtoggle:checked ~ .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -315,11 +316,32 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 /* readable small text */
 .site2 .feat .cap .lbl,.site2 .duo .lbl,.site2 .spaces .cap .lbl{font-size:.68rem}
 .site2 .figures .l{font-size:.64rem}
+.figures .t{font-size:.8rem;line-height:1.45;color:var(--ink-soft);margin:.45rem auto 0;max-width:34ch}
 .site2 .lead p,.site2 .say p,.site2 .feat .cap .body,.site2 .duo .body,.site2 .spaces .cap .desc{font-size:.9rem}
 /* hero video pause control */
 .hero-video{position:relative}
-.vidctl{position:absolute;right:.8rem;bottom:.8rem;font:600 .62rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#fff;background:rgba(30,41,50,.45);border:1px solid rgba(255,255,255,.55);padding:.6rem .9rem;cursor:pointer;min-height:36px}
-.vidctl:hover,.vidctl:focus-visible{background:rgba(30,41,50,.75)}
+/* hero video bar, after the Vimeo bar on aman.com (4 Oct 2026); square corners per the house rule */
+.vbar{position:absolute;left:.6rem;right:.6rem;bottom:.6rem;display:flex;gap:.4rem;height:40px;opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;pointer-events:none}
+.hero-video.vshow .vbar,.hero-video.vpaused .vbar,.hero-video:focus-within .vbar{opacity:1;transform:none;pointer-events:auto}
+.vb-seg{flex:1;display:flex;align-items:center;gap:.15rem;padding:0 .35rem 0 .9rem;min-width:0}
+.vb-seg{background:rgba(20,24,28,.58);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vb-btn{flex:none;display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;background:transparent;color:#fff;cursor:pointer}
+.vb-btn.vb-play{width:48px;background:rgba(20,24,28,.58);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vb-btn svg{width:18px;height:18px;fill:currentColor}
+.vb-btn:hover,.vb-btn:focus-visible{color:#E6D5A8}
+.vb-btn:focus-visible,.vb-track:focus-visible{outline:2px solid #fff;outline-offset:-3px}
+.vb-play .i-play{display:none}.vpaused .vb-play .i-play{display:block}.vpaused .vb-play .i-pause{display:none}
+.vb-track{position:relative;flex:1;min-width:0;height:40px;margin-right:.5rem;cursor:pointer;touch-action:none}
+.vb-line{position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;background:rgba(255,255,255,.32)}
+.vb-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff}
+.vb-track:hover .vb-line{height:5px;margin-top:-2.5px}
+.vb-time{position:absolute;bottom:calc(100% + 2px);left:0;transform:translateX(-50%);font:600 .66rem/1 var(--sans);letter-spacing:.04em;font-variant-numeric:tabular-nums;color:#fff;background:rgba(20,24,28,.78);padding:.32rem .42rem;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+.vb-time::after{content:"";position:absolute;left:50%;top:100%;margin-left:-4px;border:4px solid transparent;border-top-color:rgba(20,24,28,.78)}
+.vb-track:hover .vb-time,.vb-track:focus-visible .vb-time,.vpaused .vb-time{opacity:1}
+.hero-video:fullscreen{display:flex;align-items:center;background:#000}
+.hero-video:fullscreen video{height:100%;object-fit:contain}
+.hero-video:-webkit-full-screen video{height:100%;object-fit:contain}
+@media(prefers-reduced-motion:reduce){ .vbar{transition:none} }
 /* centred intro */
 .site2 .intro{text-align:center;padding-top:clamp(1.2rem,2.4vw,2rem);padding-bottom:clamp(1.4rem,2.6vw,2.2rem)}
 .site2 .intro .eyebrow{display:block;margin-bottom:.8rem}
@@ -330,7 +352,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 /* gallery strip: wide (a) and tall (b) frames in an irregular a-a-b-a-a-b rhythm, each a slightly different size,
    all bottom-aligned, boxed to the page edges (3 Oct 2026). --w/--h are in strip units (--u) */
 .strip-sec{padding-block:0 clamp(2.4rem,4vw,3.4rem)}
-.strip,.strip-rail{--pad:clamp(1.3rem,4.5vw,3.4rem);margin-inline:auto;width:min(calc(100% - 2*var(--pad)),calc(1160px - 2*var(--pad)))}
+.strip,.strip-rail{--pad:clamp(1.3rem,2vw,1.55rem);margin-inline:auto;width:min(calc(100% - 2*var(--pad)),calc(1440px - 2*var(--pad)))}
 .strip{--u:clamp(.6rem,.9vw,.8rem);gap:clamp(.7rem,1.2vw,1rem);align-items:flex-end}
 .strip img{flex:0 0 auto;width:calc(var(--w,28)*var(--u));height:calc(var(--h,21)*var(--u));object-fit:cover;filter:saturate(.85) sepia(.03) contrast(.99) brightness(1.02)}
 .strip .f-mandap{--w:34;--h:26}

@@ -15,7 +15,7 @@
 </div></header>
 <main id="main"><section class="hero wrap hero--titlelead hero--videoonly">
 
-<div class="hero-figure hero-video"><video autoplay muted loop playsinline preload="metadata" poster="assets/video/firefox-hero-poster.jpg" aria-hidden="true"><source src="assets/video/firefox-hero-1080.mp4" type="video/mp4" media="(min-width:900px)"><source src="assets/video/firefox-hero-720.mp4" type="video/mp4"></video><button class="vidctl" type="button" aria-label="Pause the video">Pause</button></div>
+<div class="hero-figure hero-video"><video autoplay muted loop playsinline preload="metadata" poster="assets/video/firefox-hero-poster.jpg" aria-hidden="true"><source src="assets/video/firefox-hero-1080.mp4" type="video/mp4" media="(min-width:900px)"><source src="assets/video/firefox-hero-720.mp4" type="video/mp4"></video><div class="vbar"><button class="vb-btn vb-play" type="button" aria-label="Pause the video"><svg class="i-pause" viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="4" width="3.2" height="12"/><rect x="11.8" y="4" width="3.2" height="12"/></svg><svg class="i-play" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4l10 6-10 6z"/></svg></button><div class="vb-seg"><div class="vb-track" role="slider" tabindex="0" aria-label="Video position" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" aria-valuetext="0 seconds"><span class="vb-line"><i class="vb-fill"></i></span><span class="vb-time" aria-hidden="true">00:00</span></div><button class="vb-btn vb-pip" type="button" aria-label="Picture in picture" hidden><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 4.5h15v11h-15z" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="10" y="10" width="6" height="4"/></svg></button><button class="vb-btn vb-fs" type="button" aria-label="Full screen"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5V3h4.5M12.5 3H17v4.5M17 12.5V17h-4.5M7.5 17H3v-4.5"/></svg></button></div></div></div>
 
 </section>
 
@@ -87,8 +87,38 @@
 <script>
 (function(){
  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.hero-video video').forEach(function(v){v.removeAttribute('autoplay');v.pause();});}
- document.querySelectorAll('.vidctl').forEach(function(b){var v=b.parentNode.querySelector('video');function lab(){var p=v.paused;b.textContent=p?'Play':'Pause';b.setAttribute('aria-label',p?'Play the video':'Pause the video');}
-  b.addEventListener('click',function(){if(v.paused){v.play();}else{v.pause();}});v.addEventListener('play',lab);v.addEventListener('pause',lab);lab();});
+ /* hero video controls, styled after the Vimeo bar on aman.com: play/pause, a thin timeline with the time above the playhead,
+    picture-in-picture and full screen. The bar shows on hover, touch or keyboard focus, hides after a moment while playing,
+    and stays up while paused. The hero has no sound, so there is no volume button. */
+ document.querySelectorAll('.hero-video').forEach(function(box){
+  var v=box.querySelector('video'),bar=box.querySelector('.vbar');if(!v||!bar)return;
+  var play=bar.querySelector('.vb-play'),tr=bar.querySelector('.vb-track'),fill=bar.querySelector('.vb-fill'),tm=bar.querySelector('.vb-time'),
+      pip=bar.querySelector('.vb-pip'),fs=bar.querySelector('.vb-fs'),idle=null,drag=false;
+  function mmss(t){t=Math.max(0,Math.floor(t||0));return ('0'+Math.floor(t/60)).slice(-2)+':'+('0'+t%60).slice(-2);}
+  function wake(){box.classList.add('vshow');clearTimeout(idle);idle=setTimeout(function(){if(!v.paused&&!drag&&!box.contains(document.activeElement))box.classList.remove('vshow');},2500);}
+  function state(){var p=v.paused;box.classList.toggle('vpaused',p);play.setAttribute('aria-label',p?'Play the video':'Pause the video');if(p)box.classList.add('vshow');else wake();}
+  function tick(){var d=v.duration||0,c=v.currentTime||0,f=d?c/d:0;fill.style.width=(f*100)+'%';tm.style.left=(f*100)+'%';tm.textContent=mmss(c);
+   tr.setAttribute('aria-valuemax',Math.round(d));tr.setAttribute('aria-valuenow',Math.round(c));tr.setAttribute('aria-valuetext',Math.round(c)+' seconds');}
+  function seek(x){var r=tr.getBoundingClientRect(),f=Math.min(1,Math.max(0,(x-r.left)/r.width));if(v.duration){v.currentTime=f*v.duration;tick();}}
+  play.addEventListener('click',function(){if(v.paused)v.play();else v.pause();});
+  v.addEventListener('play',state);v.addEventListener('pause',state);v.addEventListener('timeupdate',tick);v.addEventListener('loadedmetadata',tick);
+  tr.addEventListener('pointerdown',function(e){if(e.button!==0)return;drag=true;tr.setPointerCapture(e.pointerId);seek(e.clientX);e.preventDefault();});
+  tr.addEventListener('pointermove',function(e){if(drag)seek(e.clientX);});
+  tr.addEventListener('pointerup',function(){drag=false;wake();});tr.addEventListener('pointercancel',function(){drag=false;});
+  tr.addEventListener('keydown',function(e){var k=e.key,d=v.duration||0;if(!d)return;
+   if(k==='ArrowRight'||k==='ArrowUp'){v.currentTime=Math.min(d,v.currentTime+2);}else if(k==='ArrowLeft'||k==='ArrowDown'){v.currentTime=Math.max(0,v.currentTime-2);}
+   else if(k==='Home'){v.currentTime=0;}else if(k==='End'){v.currentTime=d-0.1;}else if(k===' '||k==='Enter'){if(v.paused)v.play();else v.pause();}else return;e.preventDefault();tick();});
+  if(document.pictureInPictureEnabled&&!v.disablePictureInPicture){pip.hidden=false;
+   pip.addEventListener('click',function(){if(document.pictureInPictureElement)document.exitPictureInPicture();else v.requestPictureInPicture().catch(function(){});});}
+  fs.addEventListener('click',function(){var on=document.fullscreenElement||document.webkitFullscreenElement;
+   if(on){(document.exitFullscreen||document.webkitExitFullscreen).call(document);}
+   else if(box.requestFullscreen){box.requestFullscreen();}else if(box.webkitRequestFullscreen){box.webkitRequestFullscreen();}else if(v.webkitEnterFullscreen){v.webkitEnterFullscreen();}});
+  function fsLab(){fs.setAttribute('aria-label',(document.fullscreenElement||document.webkitFullscreenElement)?'Exit full screen':'Full screen');}
+  document.addEventListener('fullscreenchange',fsLab);document.addEventListener('webkitfullscreenchange',fsLab);
+  ['mousemove','touchstart','focusin'].forEach(function(ev){box.addEventListener(ev,wake,{passive:true});});
+  box.addEventListener('mouseleave',function(){if(!v.paused&&!box.contains(document.activeElement))box.classList.remove('vshow');});
+  state();tick();
+ });
  document.querySelectorAll('.spaces').forEach(function(el){
   var d=false,sx=0,sl=0,mv=false;
   el.addEventListener('mousedown',function(e){if(e.button!==0)return;d=true;mv=false;sx=e.pageX;sl=el.scrollLeft;el.style.cursor='grabbing';document.body.style.userSelect='none';});

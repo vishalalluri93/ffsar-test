@@ -500,3 +500,22 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .eq-done p{margin:.7rem auto 0;max-width:40ch}
 .desks--row{grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:1.4rem 2rem}
 @media(max-width:820px){ .eq-grid{grid-template-columns:1fr} .eq-split .eq-dates{padding-top:0} }
+/* Estate: the venues, all in one place (4 Oct 2026) */
+.venue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.6rem,2.6vw,2.4rem) clamp(1rem,1.8vw,1.6rem)}
+.venue-grid--2{grid-template-columns:repeat(2,1fr)}
+.venue-grid figure{margin:0;min-width:0}
+.venue-grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.venue-grid--2 img{aspect-ratio:3/2}
+.venue-grid figcaption{padding-top:.9rem}
+.venue-grid h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.25rem,1.6vw,1.5rem);margin:0}
+.venue-grid p{margin:.45rem 0 0;font-size:.9rem;line-height:1.6;color:var(--ink-soft)}
+@media(max-width:820px){ .venue-grid{grid-template-columns:1fr 1fr} }
+@media(max-width:520px){ .venue-grid,.venue-grid--2{grid-template-columns:1fr} }
+/* Sport: tournaments as a captioned gallery strip, like the Home strip (4 Oct 2026) */
+.strip-sec--cap{padding-block:clamp(2.9rem,4.9vw,4.4rem)}
+.strip--cap{align-items:flex-start}
+.strip--cap figure{flex:0 0 auto;margin:0;width:calc(var(--w,28)*var(--u))}
+.strip--cap img{display:block;width:100%;height:calc(var(--h,21)*var(--u))}
+.strip--cap figcaption{margin-top:.7rem;font-family:var(--serif);font-size:clamp(1.05rem,1.3vw,1.2rem);line-height:1.3;color:var(--ink);max-width:28ch}
+.strip .t-a{--w:34;--h:26}.strip .t-b{--w:22;--h:30}.strip .t-c{--w:38;--h:25}.strip .t-d{--w:30;--h:27}
+.venue-grid .disc{display:inline-block;margin-top:.8rem}

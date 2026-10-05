@@ -536,18 +536,10 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .venue-grid--bare{row-gap:clamp(1rem,1.8vw,1.6rem)}
 
 /* --- visit page (draft, 5 Oct 2026) --- */
-.visit-prices{padding-block:clamp(2.4rem,4.5vw,3.8rem)}
-.price-cols{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(1.6rem,4vw,3.4rem);align-items:start;margin-top:1.4rem}
-.price{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-.price caption{text-align:left;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mist);padding-bottom:.6rem}
-.price th,.price td{padding:.62rem 0;border-bottom:1px solid rgba(0,0,0,.09);font-size:.95rem}
-.price th{text-align:left;font-weight:400}
-.price td{text-align:right;white-space:nowrap}
-.price-note{margin:1rem 0 0;font-size:.86rem;color:var(--ink-soft)}
 .visit-board{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.4rem);padding-block:clamp(2.4rem,4.5vw,3.8rem)}
 .visit-board .eyebrow{display:block;margin-bottom:.6rem}
 .draft-note{margin:1rem 0 0;padding:.9rem 1.1rem;border:1px dashed var(--mist);font-size:.86rem;color:var(--ink-soft)}
-@media(max-width:820px){ .price-cols,.visit-board{grid-template-columns:1fr} }
+@media(max-width:820px){ .visit-board{grid-template-columns:1fr} }
 
 /* --- outings: the whole-day case, events (5 Oct 2026) --- */
 .outing-day,.outing-events{padding-block:clamp(2.6rem,5vw,4.2rem)}

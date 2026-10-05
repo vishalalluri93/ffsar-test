@@ -548,3 +548,9 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .visit-board .eyebrow{display:block;margin-bottom:.6rem}
 .draft-note{margin:1rem 0 0;padding:.9rem 1.1rem;border:1px dashed var(--mist);font-size:.86rem;color:var(--ink-soft)}
 @media(max-width:820px){ .price-cols,.visit-board{grid-template-columns:1fr} }
+
+/* --- outings: the whole-day case, events (5 Oct 2026) --- */
+.outing-day,.outing-events{padding-block:clamp(2.6rem,5vw,4.2rem)}
+.outing-day .lead-p{max-width:60ch;margin:.9rem 0 clamp(2rem,4vw,3rem);color:var(--ink-soft);font-size:1.02rem}
+.outing-day .draft-note,.outing-events .draft-note{margin-top:clamp(1.6rem,3vw,2.4rem)}
+.outing-events .duo{margin-top:clamp(1.4rem,3vw,2.2rem)}

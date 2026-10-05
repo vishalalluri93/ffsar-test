@@ -574,3 +574,9 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .outing-day .grid-head{margin-bottom:0}
 .outing-day{padding-block:clamp(2.2rem,4vw,3.2rem)}
 @media(max-width:820px){ .outing-col>img{aspect-ratio:16/9} }
+
+/* experiences: day-out photo strip under Day outings (Vishal, 5 Oct 2026) */
+.strip .x-a{--w:34;--h:24}
+.strip .x-b{--w:30;--h:26}
+.strip .x-c{--w:32;--h:24}
+.strip .x-d{--w:31;--h:25}

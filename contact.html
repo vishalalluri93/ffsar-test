@@ -131,6 +131,9 @@
  /* the event type is filled in when the visitor arrives from a page that knows it (contact.html?type=wedding etc.) */
  var qt=new URLSearchParams(location.search).get('type');
  if(qt&&$('eq-type').querySelector('option[value="'+qt.replace(/[^a-z]/g,'')+'"]'))$('eq-type').value=qt;
+ /* the occasion is filled in too when a page sends one (outings.html: ?occasion=Vanabhojanam); plain words only, 60 characters at most */
+ var qo=(new URLSearchParams(location.search).get('occasion')||'').replace(/[^A-Za-z0-9 '&-]/g,'').slice(0,60).trim();
+ if(qo&&!val('eq-occasion'))$('eq-occasion').value=qo;
 
  /* calendar: several days, need not run together. Day keys are built in LOCAL time (yyyy-MM-dd). */
  var picked={}, today=new Date(); today.setHours(0,0,0,0);

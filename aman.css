@@ -581,3 +581,14 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 /* experiences: the photo strip continues the Day outings band (Vishal, 5 Oct 2026) */
 .outing-day{padding-bottom:clamp(1.6rem,3vw,2.4rem)}
 .strip-sec--exp{padding-block:0 clamp(2.4rem,4vw,3.4rem)}
+
+/* menu style A3: page names in sentence case, readable size, thin lines between them (Vishal, 5 Oct 2026) */
+nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
+@media(min-width:821px){
+  nav{gap:0}
+  nav a{font-size:.86rem;padding-inline:1rem;white-space:nowrap}
+  nav a+a:not(.enq-m){border-left:1px solid var(--line)}
+  nav a.active,.site2 nav a.active{border-bottom:0;padding-bottom:0;font-weight:700}
+}
+@media(max-width:820px){ nav a{font-size:.95rem} }
+@media(min-width:821px) and (max-width:1060px){ nav a{padding-inline:.6rem;font-size:.8rem} header .enq{margin-left:1rem} }

@@ -575,3 +575,15 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .outing-col h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,1.7vw,1.6rem);margin:1rem 0 0}
 .outing-col .body{margin:.45rem 0 0;font-size:.92rem;line-height:1.6;color:var(--ink-soft)}
 @media(max-width:820px){ .outing-cols{grid-template-columns:1fr} .outing-col .fig.trio{height:clamp(14rem,60vw,20rem)} }
+
+/* outings: the case on the left, gardens / eat / play as compact rows on the right */
+.outing-split{display:grid;grid-template-columns:.9fr 1.3fr;gap:clamp(1.8rem,5vw,4.5rem);align-items:start}
+.outing-case{position:sticky;top:6rem}
+.outing-case .eyebrow{display:block;margin-bottom:.7rem}
+.outing-case p{margin:1.1rem 0 1.6rem;max-width:42ch;font-size:1.02rem;line-height:1.7;color:var(--ink-soft)}
+.outing-rows{display:grid;gap:clamp(1.2rem,2.4vw,1.8rem)}
+.outing-row{display:grid;grid-template-columns:minmax(0,13rem) 1fr;gap:clamp(1rem,2.4vw,1.8rem);align-items:center;min-width:0}
+.outing-row img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.outing-row h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,1.7vw,1.6rem);margin:0}
+.outing-row .body{margin:.4rem 0 0;font-size:.92rem;line-height:1.6;color:var(--ink-soft)}
+@media(max-width:820px){ .outing-split{grid-template-columns:1fr} .outing-case{position:static} .outing-row{grid-template-columns:minmax(0,9rem) 1fr} }

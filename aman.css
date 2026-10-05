@@ -618,3 +618,18 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
   .eq .l,.where dt,.spaces .cap .m,.occ-line,.site2 .occ-line,.cal-g .dow,.foot .base span{font-size:.72rem!important}
   .foot .base a{display:inline-block;padding-block:.4rem}
 }
+
+/* guide pages (/guides/*.html), written weekly, approved by Vishal (6 Oct 2026) */
+.guide{max-width:760px;padding-block:clamp(2.4rem,5vw,4rem)}
+.guide .eyebrow{display:block;margin-bottom:.8rem}
+.guide h1{margin-bottom:1rem}
+.guide .lede{font-size:1.08rem;line-height:1.75;color:var(--ink-soft);margin:0 0 1.6rem}
+.guide h2{font-size:clamp(1.4rem,2vw,1.7rem);margin:2.4rem 0 .8rem}
+.guide h3{font-size:1.2rem;margin:1.6rem 0 .5rem}
+.guide p,.guide li{font-size:1rem;line-height:1.75;color:var(--ink-soft)}
+.guide ul,.guide ol{padding-left:1.2rem;margin:.6rem 0 1rem}
+.guide figure{margin:2rem 0}
+.guide figure img{width:100%;height:auto;display:block}
+.guide figcaption{font-size:.85rem;color:var(--mist);margin-top:.5rem}
+.guide p a,.guide li a{color:inherit;border-bottom:1px solid currentColor;text-decoration:none}
+.guide .cta{margin-top:2.6rem;display:flex;gap:.7rem;flex-wrap:wrap}

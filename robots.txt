@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vishalalluri93.github.io/ffsar-test/sitemap.xml

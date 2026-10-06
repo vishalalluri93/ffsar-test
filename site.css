@@ -615,6 +615,8 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
   .site2 .intro .eyebrow--strong{font-size:.56rem!important}
   /* Home strip on phones: the first frame is as tall as the tallest (the garden path, 31 units), so no blank sits above it (6 Oct 2026, Vishal) */
   .p-home .strip .f-mandap{--h:31}
+  /* Home hero video edge to edge on phones, no side gutters (6 Oct 2026, Vishal) */
+  .hero--videoonly .hero-video{margin-inline:calc(-1*clamp(1.3rem,2vw,1.55rem))}
   .site2 .intro h1{font-size:1.7rem}
   .foot li a{display:inline-block;padding-block:.35rem}
   .burger{padding:14px 10px;margin-right:-10px}

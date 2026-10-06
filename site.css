@@ -393,6 +393,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
   .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--ink);padding-bottom:env(safe-area-inset-bottom)}
   .mbar a{display:flex;align-items:center;justify-content:center;min-height:54px;font:700 .72rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--cream)}
   .mbar a+a{border-left:1px solid rgba(241,235,223,.25)}
+  .mbar a{border-bottom:1px solid rgba(241,235,223,.25)} /* a line under both buttons, so the divider meets it above the iPhone home-bar space (Vishal, 6 Oct 2026) */
   .site2{padding-bottom:54px}
   .site2 .duo--flag,.site2 .duo--flag.flip,.site2 .duo--story{grid-template-columns:1fr}
   .site2 .duo--flag.flip .txt{text-align:left}

@@ -754,3 +754,6 @@ main > section.panel:not(.strip-sec--exp),main > section.enquire{padding-top:var
 .hero--titlefirst h1{order:2;max-width:786px!important;margin-inline:auto}
 .hero--titlefirst .sub{order:3;max-width:56ch}
 .hero--titlefirst .hero-cta{order:4;margin-top:1.4rem!important}
+
+/* Home photo strip: a photo clipped at the edge fades, laptops only, like the other rails (6 Oct 2026, Vishal) */
+@media(min-width:821px){ .p-home .strip>img{transition:opacity .45s ease} .p-home .strip>img.cut{opacity:.5} }

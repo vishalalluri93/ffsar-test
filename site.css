@@ -757,3 +757,16 @@ main > section.panel:not(.strip-sec--exp),main > section.enquire{padding-top:var
 
 /* Home photo strip: a photo clipped at the edge fades, laptops only, like the other rails (6 Oct 2026, Vishal) */
 @media(min-width:821px){ .p-home .strip>img{transition:opacity .45s ease} .p-home .strip>img.cut{opacity:.5} }
+
+/* Scroll bars under photo rails: short and centred on the page on laptops, so they match (6 Oct 2026, Vishal) */
+@media(min-width:821px){
+  .scrollrail{width:240px!important;margin-inline:auto!important}
+  .seasonal{grid-template-rows:auto auto}
+  .seasonal-rail{display:contents}
+  .seasonal .seasonal-intro{grid-column:1;grid-row:1}
+  .seasonal .spaces{grid-column:2;grid-row:1;min-width:0}
+  .seasonal.flip .seasonal-intro{grid-column:2}
+  .seasonal.flip .spaces{grid-column:1}
+  .seasonal .scrollrail{grid-column:1/-1;grid-row:2;justify-self:center}
+}
+@media(min-width:821px){ .seasonal,.seasonal.flip{row-gap:0!important} }

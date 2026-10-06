@@ -793,3 +793,7 @@ main > section.hero--titlefirst + section:not(.hero):not(.intro):not(.strip-sec)
 /* openings without a label: the title takes the label's gap below the photo */
 .hero--titlefirst h1{margin-top:var(--s-hero)!important}
 .enquire .eyebrow{display:block;margin-bottom:var(--s-lbl-sec)!important}
+
+/* Sport: the court counts sit inside the rail band, below the scroll bar, one card-gap down (6 Oct 2026, Vishal) */
+.site2 .figures.figures--in{margin-top:var(--s-card)!important;padding-block:0!important;border:0!important;background:transparent!important}
+main > section.strip-sec--cap:not(.panel){padding-top:var(--s-sec)!important;padding-bottom:var(--s-sec)!important}

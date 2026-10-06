@@ -801,3 +801,6 @@ main > section.strip-sec--cap:not(.panel){padding-top:var(--s-sec)!important;pad
 /* Text -> link: 20px on phones, 34px on laptops, each matched to the reference site at its own width (6 Oct 2026, Vishal) */
 @media(min-width:821px){ .disc{padding-top:1.675rem!important} .paths .go{margin-top:auto} }
 .grid-head .eyebrow:last-child,.lead .eyebrow:last-child{margin-bottom:0!important}
+
+/* A section with only a label over its photos: the label sits like a card label, 23px above the photos and left-aligned with them (6 Oct 2026, Vishal) */
+.grid-head:has(> .eyebrow:only-child){text-align:left!important;margin-bottom:1.15rem!important}

@@ -787,3 +787,9 @@ main > section.hero--titlefirst + section:not(.hero):not(.intro):not(.strip-sec)
 /* Scroll bars as on the reference site: about 46% of the screen width, centred, on phones and laptops alike (6 Oct 2026, Vishal) */
 .scrollrail{width:clamp(170px,46vw,900px)!important;margin-inline:auto!important}
 @media(max-width:820px){ .seasonal .scrollrail,.seasonal-rail .scrollrail{margin-inline:auto!important} }
+
+/* Sport: "Our story" stands as its own band, in the deeper cream so it differs from the light band below it (6 Oct 2026, Vishal) */
+.panel--deep{background:var(--cream-deep)!important}
+/* openings without a label: the title takes the label's gap below the photo */
+.hero--titlefirst h1{margin-top:var(--s-hero)!important}
+.enquire .eyebrow{display:block;margin-bottom:var(--s-lbl-sec)!important}

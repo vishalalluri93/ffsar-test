@@ -654,13 +654,12 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
 
 /* === TYPE SYSTEM: five font/size combinations per page, all regular weight (6 Oct 2026, Vishal) ===
    "only 4-5 font/size combinations per page. a small label, heading (one size for cards and one for sections),
-   body text, and link with everything being regular weight". Sizes match aman.com by how big text LOOKS
+   body text, and link with everything being regular weight". Sizes match the reference site by how big text LOOKS
    (lowercase height; Cormorant's is small, 0.39 of its size against Lyon's 0.47, so ours are set larger).
-   Aman, phone and laptop alike: label 10.1px caps, card heading 19.6px, body 14px, link 13px; section heading
-   24.1px on phones, 31.1px on laptops. Buttons, figures and captions borrow one of the five; nothing else.
+   Reference site, phone and laptop alike: label 10.1px caps, card heading 19.6px, body 14px, link 13px; section heading 24.1px on phones, 31.1px on laptops. Buttons, figures and captions borrow one of the five; nothing else.
    Exceptions: form fields stay 16px (smaller makes iPhones zoom in); header, footer, guides and legal pages. */
 :root{--lbl-font:var(--sans);--t-sec:clamp(1.8rem,2.9vw,2.34rem);--t-card:1.475rem;--t-body:1.04rem;--t-link:.845rem;--t-lbl:.63rem}
-/* 1 — small label: gold capitals (Public Sans light = the visual match for Aman's regular Whitney) */
+/* 1 — small label: gold capitals (Public Sans light: the closest free match to the reference label font) */
 .eyebrow,.eyebrow--strong,.eyebrow--below,.lbl,.occ-line,.site2 .occ-line,.figures .l,main dt,.where dt,.eq .l,.spaces .cap .m,
 .duo .lbl,.feat .cap .lbl,.spaces .cap .lbl,.paths .lbl,.site2 .feat .cap .lbl,.site2 .duo .lbl,.site2 .spaces .cap .lbl,.venues-tall .spaces .cap .lbl,.site2 .intro .eyebrow--strong{
   font-family:var(--lbl-font)!important;font-weight:300!important;font-size:var(--t-lbl)!important;letter-spacing:.2em!important;line-height:1.45!important;text-transform:uppercase!important;font-style:normal!important}
@@ -671,12 +670,12 @@ main h1,main h2,.site2 .intro h1,.site2 .duo--story h3{
 main h3,.steps .lbl,.paths .t,.figures .n,main p.eq-more,.cal-h b,.desk a{
   font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-card)!important;line-height:1.2!important;letter-spacing:.01em!important;text-transform:none!important}
 .site2 .duo--story h3{font-size:var(--t-sec)!important;line-height:1.18!important}
-/* 4 — body text: the serif, as Aman sets its paragraphs in Lyon (two fonts: serif for reading, sans for small things) */
+/* 4 — body text: the serif, as the reference site sets its paragraphs in its serif (two fonts: serif for reading, sans for small things) */
 main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub,.site2 .hero .sub,.desk .val,.steps .t,.figures .t,main p.eq-more span{
   font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-body)!important;line-height:1.38!important;letter-spacing:0!important;text-transform:none!important}
 /* form controls (tick boxes, calendar) are small things: the sans at link size */
 .eq-nd,.cal-g button,.cal-g .dow{font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-link)!important;letter-spacing:0!important;text-transform:none!important}
-/* 5 — link: "Discover more", buttons, the phone call bar — the sans, as Aman uses Whitney for these */
+/* 5 — link: "Discover more", buttons, the phone call bar — the sans, as the reference site does */
 .disc,.disc span,.paths .go,.btn,.mbar a{
   font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-link)!important;letter-spacing:.06em!important;text-transform:none!important}
 /* Home: the four path cards take the card heading, so on phones they stack one per row instead of two squeezed side by side */
@@ -689,7 +688,7 @@ main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub
 /* --- Text fades in and rises as it scrolls into view (assets/reveal.js; 6 Oct 2026, Vishal) --- */
 .rv{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
-.rvi{opacity:0;transition:opacity .7s ease-in-out}      /* photos: fade only, as aman.com */
+.rvi{opacity:0;transition:opacity .7s ease-in-out}      /* photos: fade only, as the reference site */
 .rvi.in{opacity:1}
 @media(prefers-reduced-motion:reduce){.rv,.rvi{opacity:1;transform:none;transition:none}}
 
@@ -697,8 +696,8 @@ main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub
 button,input,select,textarea{font-family:inherit}
 .eq-btn,.eq-btn span{font-family:var(--sans)!important}
 
-/* === SPACING SYSTEM: matched to aman.com, phone and laptop each to its own (6 Oct 2026, Vishal) ===
-   Measured on aman.com between the letters themselves (not the text boxes). The same on both widths:
+/* === SPACING SYSTEM: matched to the reference design, phone and laptop each to its own (6 Oct 2026, Vishal) ===
+   Measured on the reference site between the letters themselves (not the text boxes). The same on both widths:
    photo -> label 18px, label -> card heading 23, card heading -> text 15, text -> link 20; coloured
    bands: first text 86px below the top edge, last text 116px above the bottom. Phone -> laptop: section heading -> text 16 -> 37, section heading
    -> photo 18 -> 72, label -> section heading 22 -> 29, card to card 80 -> 103, section to section

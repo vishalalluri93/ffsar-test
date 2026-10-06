@@ -20,7 +20,7 @@
  },{rootMargin:'0px 0px -6% 0px',threshold:0.1});
  els.forEach(function(e){io.observe(e);});
 
- /* Photos fade in too, without the rise, as aman.com does (6 Oct 2026, Vishal: "the photos should also fade-in").
+ /* Photos fade in too, without the rise, as the reference site does (6 Oct 2026, Vishal: "the photos should also fade-in").
     A photo still loading waits for its pixels; any sliver in view counts, so a card peeking in from a photo rail is never blank. */
  var imgs=[].slice.call(document.querySelectorAll('main img')).filter(function(im){
   return !im.closest('.hero') && im.getBoundingClientRect().top>vh;

@@ -12,7 +12,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-/* width and side margins matched to aman.com: 1440px column, ~25px gutter (4 Oct 2026) */
+/* width and side margins: 1440px column, ~25px gutter (4 Oct 2026) */
 .wrap{max-width:1440px;margin-inline:auto;padding-inline:clamp(1.3rem,2vw,1.55rem)}
 .skip{position:absolute;left:-999px}
 .eyebrow{font-size:.63rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
@@ -201,7 +201,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .disc span{padding-bottom:.4rem}
 .spaces figure{flex:0 0 clamp(21rem,28vw,26rem)}           /* bigger gallery photos */
 .spaces img{height:clamp(19rem,26vw,24rem)}
-.trio3{gap:clamp(2.2rem,3.8vw,3.4rem)}                     /* match Aman "Destinations" 3-up */
+.trio3{gap:clamp(2.2rem,3.8vw,3.4rem)}                     /* 3-up grid */
 .trio3 .feat .fig img{height:clamp(20rem,28vw,26rem)}       /* tall images like the reference */
 .trio3 .feat .cap h3{font-size:clamp(1.3rem,1.7vw,1.55rem)}
 .trio3 .feat .cap .body{font-size:.98rem}
@@ -258,7 +258,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
   .duo--corp .duo:first-child .txt .body{margin-left:0}
 }
 
-/* --- doc round 10: home venues carousel -> Aman "destinations" look --- */
+/* --- doc round 10: home venues carousel --- */
 .venues-tall .spaces figure{flex:0 0 clamp(20rem,26vw,24rem)}
 .venues-tall .spaces img{height:clamp(25rem,35vw,33rem)}
 .venues-tall .spaces .cap{padding-top:1rem}
@@ -322,7 +322,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .site2 .lead p,.site2 .say p,.site2 .feat .cap .body,.site2 .duo .body,.site2 .spaces .cap .desc{font-size:.9rem}
 /* hero video pause control */
 .hero-video{position:relative}
-/* hero video bar, after the Vimeo bar on aman.com (4 Oct 2026); square corners per the house rule */
+/* hero video bar (4 Oct 2026); square corners per the house rule */
 .vbar{position:absolute;left:.6rem;right:.6rem;bottom:.6rem;display:flex;gap:.4rem;height:40px;opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;pointer-events:none}
 .hero-video.vshow .vbar,.hero-video.vpaused .vbar,.hero-video:focus-within .vbar{opacity:1;transform:none;pointer-events:auto}
 .vb-seg{flex:1;display:flex;align-items:center;gap:.15rem;padding:0 .35rem 0 .9rem;min-width:0}

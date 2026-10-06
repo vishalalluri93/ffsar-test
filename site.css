@@ -96,9 +96,9 @@ section{padding-block:clamp(2.4rem,4.2vw,3.7rem)}
 /* drag carousel */
 .spaces{display:flex;gap:clamp(.9rem,1.6vw,1.35rem);overflow-x:auto;padding-bottom:.7rem;scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
 .spaces::-webkit-scrollbar{display:none}
-/* Home only: any frame cut off at either edge fades a little, to show there is more (3 Oct 2026; Vishal kept it to Home) */
-.p-home .spaces>*{transition:opacity .45s ease}
-.p-home .spaces>.cut{opacity:.5}
+/* Home only, laptop widths only: any frame cut off at either edge fades a little, to show there is more (3 Oct 2026; Vishal kept it to Home).
+   Not on phones (6 Oct 2026, Vishal): on a small screen almost every frame is cut, so each sat faded until dead centre. */
+@media(min-width:821px){ .p-home .spaces>*{transition:opacity .45s ease} .p-home .spaces>.cut{opacity:.5} }
 .spaces figure{flex:0 0 clamp(19rem,25vw,23rem);margin:0}
 .spaces img{width:100%;height:clamp(17rem,23vw,21rem);object-fit:cover}
 .spaces .cap{padding-top:.85rem}

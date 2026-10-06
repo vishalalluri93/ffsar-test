@@ -645,3 +645,7 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
 .guide figcaption{font-size:.85rem;color:var(--mist);margin-top:.5rem}
 .guide p a,.guide li a{color:inherit;border-bottom:1px solid currentColor;text-decoration:none}
 .guide .cta{margin-top:2.6rem;display:flex;gap:.7rem;flex-wrap:wrap}
+
+/* --- links inside running text: the same thin rule as the enquiry heading (SEO internal links, 6 Oct 2026) --- */
+.hero .sub a,.story-block p a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+.hero .sub a:hover,.story-block p a:hover{border-bottom-color:currentColor}

@@ -1,11 +1,11 @@
 /* fonts: self-hosted variable WOFF2, latin subset (5 Oct 2026); were loaded from Google Fonts */
-@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/cormorant-garamond-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/newsreader-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:'Public Sans';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/public-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 
 :root{
   --cream:#F1EBDF; --cream-deep:#EDE6D6; --ink:#1E2932; --ink-soft:#3A444E;
   --card:#2F3942; --mist:#6A7480; --gold:#B79A5E; --label:#9C855B; --line:#E1DBCE; --gilt:#A88A50; --err:#9B3B2E;
-  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Public Sans',-apple-system,'Segoe UI',sans-serif;
+  --serif:'Newsreader',Georgia,serif; --sans:'Public Sans',-apple-system,'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -655,24 +655,24 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
 /* === TYPE SYSTEM: five font/size combinations per page, all regular weight (6 Oct 2026, Vishal) ===
    "only 4-5 font/size combinations per page. a small label, heading (one size for cards and one for sections),
    body text, and link with everything being regular weight". Sizes match the reference site by how big text LOOKS
-   (lowercase height; Cormorant's is small, 0.39 of its size against Lyon's 0.47, so ours are set larger).
+   (lowercase height: Newsreader's is 0.44 of its size against the reference serif's 0.47, so ours are set a little larger).
    Reference site, phone and laptop alike: label 10.1px caps, card heading 19.6px, body 14px, link 13px; section heading 24.1px on phones, 31.1px on laptops. Buttons, figures and captions borrow one of the five; nothing else.
    Exceptions: form fields stay 16px (smaller makes iPhones zoom in); header, footer, guides and legal pages. */
-:root{--lbl-font:var(--sans);--t-sec:clamp(1.8rem,2.9vw,2.34rem);--t-card:1.475rem;--t-body:1.04rem;--t-link:.845rem;--t-lbl:.63rem}
+:root{--lbl-font:var(--sans);--t-sec:clamp(1.61rem,2.6vw,2.08rem);--t-card:1.31rem;--t-body:.925rem;--t-link:.845rem;--t-lbl:.63rem}
 /* 1 — small label: gold capitals (Public Sans light: the closest free match to the reference label font) */
 .eyebrow,.eyebrow--strong,.eyebrow--below,.lbl,.occ-line,.site2 .occ-line,.figures .l,main dt,.where dt,.eq .l,.spaces .cap .m,
 .duo .lbl,.feat .cap .lbl,.spaces .cap .lbl,.paths .lbl,.site2 .feat .cap .lbl,.site2 .duo .lbl,.site2 .spaces .cap .lbl,.venues-tall .spaces .cap .lbl,.site2 .intro .eyebrow--strong{
   font-family:var(--lbl-font)!important;font-weight:300!important;font-size:var(--t-lbl)!important;letter-spacing:.2em!important;line-height:1.45!important;text-transform:uppercase!important;font-style:normal!important}
-/* 2 — section heading: page titles included, one size. Cormorant at 500 (medium) for headings and body: its 400 has hairline strokes that read smaller and paler than the reference serif's regular (6 Oct 2026, Vishal chose it side by side) */
+/* 2 — section heading: page titles included, one size. Serif is Newsreader (6 Oct 2026, Vishal): headings 400, body 350 on a 1.6 line, sized to look as big as the reference serif (lowercase height 0.44 vs 0.47) */
 main h1,main h2,.site2 .intro h1,.site2 .duo--story h3{
-  font-family:var(--serif)!important;font-weight:500!important;font-size:var(--t-sec)!important;line-height:1.18!important;letter-spacing:.01em!important}
+  font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-sec)!important;line-height:1.25!important;letter-spacing:.01em!important}
 /* 3 — card heading: one size */
 main h3,.steps .lbl,.paths .t,.figures .n,main p.eq-more,.cal-h b,.desk a{
-  font-family:var(--serif)!important;font-weight:500!important;font-size:var(--t-card)!important;line-height:1.2!important;letter-spacing:.01em!important;text-transform:none!important}
-.site2 .duo--story h3{font-size:var(--t-sec)!important;line-height:1.18!important}
+  font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-card)!important;line-height:1.25!important;letter-spacing:.01em!important;text-transform:none!important}
+.site2 .duo--story h3{font-size:var(--t-sec)!important;line-height:1.25!important}
 /* 4 — body text: the serif, as the reference site sets its paragraphs in its serif (two fonts: serif for reading, sans for small things) */
 main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub,.site2 .hero .sub,.desk .val,.steps .t,.figures .t,main p.eq-more span{
-  font-family:var(--serif)!important;font-weight:500!important;font-size:var(--t-body)!important;line-height:1.38!important;letter-spacing:0!important;text-transform:none!important}
+  font-family:var(--serif)!important;font-weight:350!important;font-size:var(--t-body)!important;line-height:1.6!important;letter-spacing:0!important;text-transform:none!important}
 /* form controls (tick boxes, calendar) are small things: the sans at link size */
 .eq-nd,.cal-g button,.cal-g .dow{font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-link)!important;letter-spacing:0!important;text-transform:none!important}
 /* 5 — link: "Discover more", buttons, the phone call bar — the sans, as the reference site does */
@@ -812,3 +812,26 @@ main > section.strip-sec--cap:not(.panel){padding-top:var(--s-sec)!important;pad
 main > section:has(.scrollrail):not(:has(.figures--in)):not(#_){padding-bottom:var(--s-rail-step)!important}
 main > section:has(.scrollrail) + section:not(.hero):not(#_){padding-top:var(--s-rail-step)!important}
 .figures--in{margin-top:var(--s-rail-step)!important}
+
+/* Scroll bars: track and thumb drawn the same way (two 1px lines centred together), so they always sit exactly in line (6 Oct 2026, Vishal) */
+.scrollrail{background:none!important}
+.scrollrail::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;transform:translateY(-50%);background:var(--line)}
+.scrollrail i{z-index:1}
+
+/* Section edges: where the background changes, the space after the last thing = the space before the first thing in the next
+   section = 86px; where it does not change, one 86px gap, counted once. Phone and laptop alike (6 Oct 2026, Vishal) */
+:root{--s-edge:5.375rem}
+main > section.panel:not(#_),main > section.enquire:not(#_){padding-top:var(--s-edge)!important;padding-bottom:var(--s-edge)!important}
+main > section:not(.intro):has(+ section.panel):not(#_),main > section:not(.intro):has(+ section.enquire):not(#_){padding-bottom:var(--s-edge)!important}
+main > section.panel + section:not(#_),main > section.enquire + section:not(#_){padding-top:var(--s-edge)!important}
+main > section:not(.panel):not(.enquire):not(.intro):not(.hero):has(+ section:not(.panel):not(.enquire)):not(#_){padding-bottom:var(--s-edge)!important}
+main > section:not(.panel):not(.enquire) + section:not(.panel):not(.enquire):not(.hero):not(#_){padding-top:0!important}
+.site2 .strip-sec + .paths:not(#_){padding-top:0!important}
+/* Experiences: the two light bands are one colour, so one gap; old extra margins removed (6 Oct 2026) */
+main > section.panel + section.panel.strip-sec--exp:not(#_){padding-top:0!important}
+main > section.outing-day:has(+ .strip-sec--exp):not(#_){padding-bottom:var(--s-edge)!important}
+.outing-day .trio3:not(#_){margin-top:0!important}
+.outing-events .duo:not(#_),section .grid-head + .duo:not(#_){margin-top:0!important}
+.outing-events:not(#_),.outing-day > .wrap:not(#_){padding-top:0!important;padding-bottom:0!important}
+/* scroll bar thumb: dark grey, not black (6 Oct 2026, Vishal) */
+.scrollrail i{background:var(--mist)!important}

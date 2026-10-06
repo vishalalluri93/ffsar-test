@@ -770,8 +770,8 @@ main > section.panel:not(.strip-sec--exp),main > section.enquire{padding-top:var
 }
 @media(min-width:821px){ .seasonal,.seasonal.flip{row-gap:0!important} }
 
-/* Button pairs (Enquire / Call) are spaced like photos: text -> buttons = text -> photo, 18px phone / 72px laptop (6 Oct 2026, Vishal) */
-.hero-cta,.enquire .cta,.site2 .say .hero-cta,.hero--titlefirst .hero-cta{margin-top:var(--s-head-photo)!important}
+/* Button pairs (Enquire / Call): text -> buttons = section heading -> text, 16px phone / 37px laptop (6 Oct 2026, Vishal; was spaced like photos) */
+.hero-cta,.enquire .cta,.site2 .say .hero-cta,.hero--titlefirst .hero-cta{margin-top:calc(var(--s-sec-body) + .16rem)!important}
 .enquire .cta{display:flex!important;justify-content:center}
 .enquire p{margin-bottom:0!important}
 

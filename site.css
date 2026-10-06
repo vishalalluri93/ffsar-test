@@ -804,3 +804,11 @@ main > section.strip-sec--cap:not(.panel){padding-top:var(--s-sec)!important;pad
 
 /* A section with only a label over its photos: the label sits like a card label, 23px above the photos and left-aligned with them (6 Oct 2026, Vishal) */
 .grid-head:has(> .eyebrow:only-child){text-align:left!important;margin-bottom:1.15rem!important}
+
+/* Photo rails: end of text -> scroll bar -> end of section -> first content of the next section, all one even step of 86px
+   (= the reference site's bar-to-section-end; same on phone and laptop, as there) (6 Oct 2026, Vishal) */
+:root{--s-rail-step:5.375rem}
+.scrollrail{margin-top:calc(var(--s-rail-step) - .75rem - 1.05rem)!important}
+main > section:has(.scrollrail):not(:has(.figures--in)):not(#_){padding-bottom:var(--s-rail-step)!important}
+main > section:has(.scrollrail) + section:not(.hero):not(#_){padding-top:var(--s-rail-step)!important}
+.figures--in{margin-top:var(--s-rail-step)!important}

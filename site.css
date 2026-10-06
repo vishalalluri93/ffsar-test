@@ -349,7 +349,8 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .site2 .intro .eyebrow{display:block;margin-bottom:.8rem}
 .site2 .intro h1{font-size:clamp(1.45rem,2.2vw,1.95rem);line-height:1.18}
 .eyebrow--strong{font-weight:700;font-size:.7rem}
-.hero--videoonly{padding-top:clamp(1.6rem,2.8vw,2.4rem)}
+.hero--videoonly{padding-top:0}                                   /* video flush under the header, no gap (6 Oct 2026, Vishal) */
+.hero--videoonly .hero-figure{margin-top:0}
 .site2 .intro p{margin:.8rem auto 0;max-width:52ch;font-size:.95rem}
 /* gallery strip: wide (a) and tall (b) frames in an irregular a-a-b-a-a-b rhythm, each a slightly different size,
    all bottom-aligned, boxed to the page edges (3 Oct 2026). --w/--h are in strip units (--u) */

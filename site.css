@@ -652,33 +652,39 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
 .hero .sub a,.story-block p a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
 .hero .sub a:hover,.story-block p a:hover{border-bottom-color:currentColor}
 
-/* --- Phone type matched to aman.com by how big the text LOOKS (lowercase height), measured at 390 px (6 Oct 2026, Vishal) ---
-   Aman on phones: labels 10.1px light caps at .2em; card headings 19.6px; page and section headings 24.1px; body 14px on a
-   20.3px line; "Discover more" 13px regular. Cormorant's lowercase is small (0.39 of its size against Lyon's 0.47), so ours
-   are set larger to look the same; Mulish's is larger (0.505 against 0.465), so body is set smaller. */
+/* === TYPE SYSTEM: five font/size combinations per page, all regular weight (6 Oct 2026, Vishal) ===
+   "only 4-5 font/size combinations per page. a small label, heading (one size for cards and one for sections),
+   body text, and link with everything being regular weight". Sizes match aman.com by how big text LOOKS
+   (lowercase height; Cormorant's is small, 0.39 of its size against Lyon's 0.47, so ours are set larger).
+   Aman, phone and laptop alike: label 10.1px caps, card heading 19.6px, body 14px, link 13px; section heading
+   24.1px on phones, 31.1px on laptops. Buttons, figures and captions borrow one of the five; nothing else.
+   Exceptions: form fields stay 16px (smaller makes iPhones zoom in); header, footer, guides and legal pages. */
 @font-face{font-family:'Public Sans';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/public-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
-/* the small gold capitals under photos and above sections: Public Sans light, the nearest free match to Aman's Whitney */
-.eyebrow,.feat .cap .lbl,.duo .lbl,.spaces .cap .lbl,.paths .lbl,.occ-line,.site2 .occ-line{font-family:'Public Sans',var(--sans);font-weight:300}
-.eyebrow--strong{font-weight:500}
-@media(max-width:820px){
-  .eyebrow,.feat .cap .lbl,.duo .lbl,.spaces .cap .lbl,.paths .lbl,.occ-line,.site2 .occ-line{font-size:.63rem!important;letter-spacing:.2em!important;line-height:1.45!important}
-  .site2 .intro .eyebrow--strong{font-size:.6rem!important}
-  /* page and section headings: one size, as Aman */
-  main h1,main h2,.site2 .intro h1,.site2 .duo--story h3{font-size:1.8rem!important;line-height:1.18!important}
-  /* every card heading: one size */
-  main h3{font-size:1.475rem!important;font-weight:400!important;line-height:1.2!important}
-  .site2 .duo--story h3{font-size:1.8rem!important}
-  .guide h3{font-size:1.2rem!important}
-  /* body text */
-  main p,main dd,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub,.site2 .hero .sub,.pair2 .feat .cap .body{font-size:.81rem!important;line-height:1.56!important}
-  main p.eq-more{font-size:1.2rem!important}
-  /* Weddings' function list: the name is a card heading (an older phone rule for small capitals had shrunk it to 11.5px), the place is body text */
-  .steps .lbl{font-size:1.475rem!important}
-  .steps .t,.desk .val{font-size:.81rem!important;line-height:1.56!important}
-  /* "Discover more" links */
-  .disc,.paths .go{font-size:.87rem!important;font-weight:400!important;letter-spacing:.06em!important}
-}
-
+:root{--lbl-font:'Public Sans',var(--sans);--t-sec:clamp(1.8rem,2.9vw,2.34rem);--t-card:1.475rem;--t-body:.81rem;--t-link:.87rem;--t-lbl:.63rem}
+/* 1 — small label: gold capitals (Public Sans light = the visual match for Aman's regular Whitney) */
+.eyebrow,.eyebrow--strong,.eyebrow--below,.lbl,.occ-line,.site2 .occ-line,.figures .l,main dt,.where dt,.eq .l,.spaces .cap .m,
+.duo .lbl,.feat .cap .lbl,.spaces .cap .lbl,.paths .lbl,.site2 .feat .cap .lbl,.site2 .duo .lbl,.site2 .spaces .cap .lbl,.venues-tall .spaces .cap .lbl,.site2 .intro .eyebrow--strong{
+  font-family:var(--lbl-font)!important;font-weight:300!important;font-size:var(--t-lbl)!important;letter-spacing:.2em!important;line-height:1.45!important;text-transform:uppercase!important;font-style:normal!important}
+/* 2 — section heading: page titles included, one size */
+main h1,main h2,.site2 .intro h1,.site2 .duo--story h3{
+  font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-sec)!important;line-height:1.18!important;letter-spacing:.01em!important}
+/* 3 — card heading: one size */
+main h3,.steps .lbl,.paths .t,.figures .n,main p.eq-more,.cal-h b,.desk a{
+  font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-card)!important;line-height:1.2!important;letter-spacing:.01em!important;text-transform:none!important}
+.site2 .duo--story h3{font-size:var(--t-sec)!important;line-height:1.18!important}
+/* 4 — body text */
+main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub,.site2 .hero .sub,.desk .val,.steps .t,.figures .t,.eq-nd,main p.eq-more span,.cal-g button,.cal-g .dow{
+  font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-body)!important;line-height:1.56!important;letter-spacing:0!important;text-transform:none!important}
+/* 5 — link: "Discover more", buttons, the phone call bar */
+.disc,.disc span,.paths .go,.btn,.mbar a{
+  font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-link)!important;letter-spacing:.06em!important;text-transform:none!important}
+/* Home: the four path cards take the card heading, so on phones they stack one per row instead of two squeezed side by side */
+@media(max-width:520px){ .paths ul{grid-template-columns:1fr!important} .paths li+li,.paths li:nth-child(n){border-left:0!important} .paths li+li{border-top:1px solid var(--line)!important} }
+/* kept outside the system: guides and legal pages have their own long-read sizes */
+.guide h1,.legal h1{font-size:clamp(1.85rem,3vw,2.55rem)!important}
+.guide h2,.legal h2{font-size:clamp(1.4rem,2vw,1.7rem)!important}
+.guide h3{font-size:1.2rem!important}
+.guide p,.guide li{font-size:1rem!important;line-height:1.75!important}
 /* --- Text fades in and rises as it scrolls into view (assets/reveal.js; 6 Oct 2026, Vishal) --- */
 .rv{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}

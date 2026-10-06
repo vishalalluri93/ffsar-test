@@ -696,3 +696,47 @@ main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub
 /* form buttons and fields take the page's font (browsers otherwise use Arial) */
 button,input,select,textarea{font-family:inherit}
 .eq-btn,.eq-btn span{font-family:var(--sans)!important}
+
+/* === SPACING SYSTEM: matched to aman.com, phone and laptop each to its own (6 Oct 2026, Vishal) ===
+   Measured on aman.com between the letters themselves (not the text boxes). The same on both widths:
+   photo -> label 18px, label -> card heading 23, card heading -> text 15, text -> link 20; coloured
+   bands: first text 86px below the top edge, last text 116px above the bottom. Phone -> laptop: section heading -> text 16 -> 37, section heading
+   -> photo 18 -> 72, label -> section heading 22 -> 29, card to card 80 -> 103, section to section
+   ~106 -> ~188, gaps in photo grids and between text and photo side by side 48 on laptops.
+   The margins below are those gaps less each style's built-in line spacing. */
+:root{--s-sec:3.3rem;--s-band-t:5.2rem;--s-band-b:7.2rem;--s-card:4.5rem;--s-sec-body:.63rem;--s-head-photo:.95rem;--s-lbl-sec:1.07rem;--s-gutter:1.6rem;--s-rail:.9rem}
+@media(min-width:821px){:root{--s-sec:5.6rem;--s-card:6rem;--s-sec-body:1.9rem;--s-head-photo:4.3rem;--s-lbl-sec:1.45rem;--s-gutter:3rem;--s-rail:3rem}}
+/* sections and coloured bands */
+main > section:not(.hero):not(.intro):not(.strip-sec):not(.paths):not(.figures):not(.panel):not(.enquire){padding-top:var(--s-sec)!important;padding-bottom:var(--s-sec)!important}
+main > section.panel:not(.strip-sec--exp),main > section.enquire{padding-top:var(--s-band-t)!important;padding-bottom:var(--s-band-b)!important}
+/* inside a card: photo -> label 18, label -> heading 23, heading -> text 15, text -> link 20 */
+.feat .cap,.spaces .cap,.venues-tall .spaces .cap,.venue-grid figcaption{padding-top:1rem!important}
+.feat .cap .lbl,.duo .lbl,.spaces .cap .lbl,.venues-tall .spaces .cap .lbl{display:block;margin-bottom:1.15rem!important}
+.spaces .cap h3,.venues-tall .spaces .cap h3,.seasonal .spaces .cap h3{margin-top:0!important}
+.feat .cap h3,.duo h3,.occ-list h3,.venue-grid h3,.spaces .cap h3{margin-bottom:.6rem!important}
+.venue-grid p,.spaces .cap .desc,.venues-tall .spaces .cap .desc,.seasonal .spaces .cap .desc{margin-top:0!important}
+.disc{padding-top:.8rem!important}
+.duo .disc,.lead .disc,.venue-grid .disc{margin-top:0!important}
+.paths .t{margin:1.15rem 0 1rem!important}
+/* card to card */
+.duo+.duo{margin-top:var(--s-card)!important}
+.trio3,.pair2{row-gap:var(--s-card)!important;column-gap:var(--s-gutter)!important}
+.venue-grid{row-gap:var(--s-card)!important;column-gap:var(--s-gutter)!important}
+.venue-grid--bare{row-gap:var(--s-gutter)!important}
+/* side by side on laptops: 48px between photos, and between text and photo */
+.duo,.site2 .duo--flag,.where,.seasonal,.seasonal.flip,.visit-board{column-gap:var(--s-gutter)!important}
+.spaces{gap:var(--s-rail)!important}
+@media(max-width:820px){ .duo,.pair2 .feat{row-gap:1rem!important} .duo .fig{margin-bottom:0} }
+/* section headings: label -> heading 22/29, heading -> text 16/37, heading (or its text) -> photos 18/72 */
+.say .eyebrow,.grid-head .eyebrow,.lead .eyebrow,.where .eyebrow,.facts .head .eyebrow,.seasonal-intro .eyebrow,.story-block .eyebrow,.eq-head .eyebrow,.contact .eyebrow,.hero .eyebrow,.site2 .intro .eyebrow,.visit-board .eyebrow{display:block;margin-bottom:var(--s-lbl-sec)!important}
+.say h2,.grid-head h2,.lead h2,.where h2,.facts .head h2,.seasonal-intro h2,.story-block h2,.eq-head h2,.enquire h2,.contact h2{margin-bottom:0!important}
+.say p,.grid-head p,.lead p,.facts .head p,.seasonal-intro p,.story-block p,.eq-head p,.enquire p,.hero .sub,.site2 .intro p{margin-top:var(--s-sec-body)!important}
+.where dl,.contact .desks{margin-top:var(--s-sec-body)!important}
+.grid-head,.lead,.facts .head{margin-bottom:var(--s-head-photo)!important}
+.grid-head p,.lead p{margin-bottom:0!important}
+@media(max-width:820px){ .seasonal,.seasonal.flip{row-gap:var(--s-head-photo)!important} }
+.site2 .duo--story h3{margin-bottom:var(--s-sec-body)!important}
+/* Home: the intro line sits 18px above the photo strip, as a section heading's text above its photos */
+.site2 .intro{padding-bottom:.9rem!important}
+
+.spaces picture{display:block}

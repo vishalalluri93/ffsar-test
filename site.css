@@ -612,7 +612,9 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
 @media(max-width:820px){
   .eyebrow,.btn,.lbl,.foot .fh,.figures .l,.duo .lbl,.feat .cap .lbl,.spaces .cap .lbl{font-size:.72rem!important}
   /* Home intro: keep the 'Moinabad · 20 minutes' line about a third of the heading's height, as on laptops (6 Oct 2026, Vishal) */
-  .site2 .intro .eyebrow--strong{font-size:.62rem!important}
+  .site2 .intro .eyebrow--strong{font-size:.56rem!important}
+  /* Home strip on phones: the first frame is as tall as the tallest (the garden path, 31 units), so no blank sits above it (6 Oct 2026, Vishal) */
+  .p-home .strip .f-mandap{--h:31}
   .site2 .intro h1{font-size:1.7rem}
   .foot li a{display:inline-block;padding-block:.35rem}
   .burger{padding:14px 10px;margin-right:-10px}

@@ -682,4 +682,6 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
 /* --- Text fades in and rises as it scrolls into view (assets/reveal.js; 6 Oct 2026, Vishal) --- */
 .rv{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+.rvi{opacity:0;transition:opacity .7s ease-in-out}      /* photos: fade only, as aman.com */
+.rvi.in{opacity:1}
+@media(prefers-reduced-motion:reduce){.rv,.rvi{opacity:1;transform:none;transition:none}}

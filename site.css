@@ -351,6 +351,10 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
 .eyebrow--strong{font-weight:700;font-size:.7rem}
 .hero--videoonly{padding-top:0}                                   /* video flush under the header, no gap (6 Oct 2026, Vishal) */
 .hero--videoonly .hero-figure{margin-top:0}
+/* Subpages: the hero photo first, flush under the header; eyebrow, heading, sub-line and buttons follow below it (6 Oct 2026, Vishal) */
+.hero--titlefirst{display:flex;flex-direction:column;padding-top:0}
+.hero--titlefirst .hero-figure{order:-1;margin-top:0;margin-bottom:clamp(1.6rem,2.8vw,2.4rem)}
+.hero--titlefirst .hero-cta{margin-top:1.2rem}
 .site2 .intro p{margin:.8rem auto 0;max-width:52ch;font-size:.95rem}
 /* gallery strip: wide (a) and tall (b) frames in an irregular a-a-b-a-a-b rhythm, each a slightly different size,
    all bottom-aligned, boxed to the page edges (3 Oct 2026). --w/--h are in strip units (--u) */

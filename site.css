@@ -760,7 +760,6 @@ main > section.panel:not(.strip-sec--exp),main > section.enquire{padding-top:var
 
 /* Scroll bars under photo rails: short and centred on the page on laptops, so they match (6 Oct 2026, Vishal) */
 @media(min-width:821px){
-  .scrollrail{width:240px!important;margin-inline:auto!important}
   .seasonal{grid-template-rows:auto auto}
   .seasonal-rail{display:contents}
   .seasonal .seasonal-intro{grid-column:1;grid-row:1}
@@ -781,3 +780,10 @@ main > section.hero--titlefirst + section:not(.hero):not(.intro):not(.strip-sec)
 /* "Under the open sky" (and any flipped intro) reads left-aligned, like every other text block (6 Oct 2026, Vishal) */
 .seasonal.flip .seasonal-intro{text-align:left!important}
 .seasonal.flip .seasonal-intro p{margin-left:0!important}
+
+/* Home: the intro line sits 18px (phone) / 72px (laptop) above the photo strip, as text above photos everywhere (6 Oct 2026, Vishal) */
+.site2 .intro{padding-bottom:calc(var(--s-head-photo) - .2rem)!important}
+
+/* Scroll bars as on the reference site: about 46% of the screen width, centred, on phones and laptops alike (6 Oct 2026, Vishal) */
+.scrollrail{width:clamp(170px,46vw,900px)!important;margin-inline:auto!important}
+@media(max-width:820px){ .seasonal .scrollrail,.seasonal-rail .scrollrail{margin-inline:auto!important} }

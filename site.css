@@ -775,3 +775,9 @@ main > section.panel:not(.strip-sec--exp),main > section.enquire{padding-top:var
 .hero-cta,.enquire .cta,.site2 .say .hero-cta,.hero--titlefirst .hero-cta{margin-top:var(--s-head-photo)!important}
 .enquire .cta{display:flex!important;justify-content:center}
 .enquire p{margin-bottom:0!important}
+
+/* After a page opening, a section on the same background does not add its own top gap: one gap, not two stacked (6 Oct 2026, Vishal) */
+main > section.hero--titlefirst + section:not(.hero):not(.intro):not(.strip-sec):not(.paths):not(.figures):not(.panel):not(.enquire){padding-top:0!important}
+/* "Under the open sky" (and any flipped intro) reads left-aligned, like every other text block (6 Oct 2026, Vishal) */
+.seasonal.flip .seasonal-intro{text-align:left!important}
+.seasonal.flip .seasonal-intro p{margin-left:0!important}

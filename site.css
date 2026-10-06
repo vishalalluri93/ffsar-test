@@ -663,16 +663,16 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
 .eyebrow,.eyebrow--strong,.eyebrow--below,.lbl,.occ-line,.site2 .occ-line,.figures .l,main dt,.where dt,.eq .l,.spaces .cap .m,
 .duo .lbl,.feat .cap .lbl,.spaces .cap .lbl,.paths .lbl,.site2 .feat .cap .lbl,.site2 .duo .lbl,.site2 .spaces .cap .lbl,.venues-tall .spaces .cap .lbl,.site2 .intro .eyebrow--strong{
   font-family:var(--lbl-font)!important;font-weight:300!important;font-size:var(--t-lbl)!important;letter-spacing:.2em!important;line-height:1.45!important;text-transform:uppercase!important;font-style:normal!important}
-/* 2 — section heading: page titles included, one size */
+/* 2 — section heading: page titles included, one size. Cormorant at 500 (medium) for headings and body: its 400 has hairline strokes that read smaller and paler than the reference serif's regular (6 Oct 2026, Vishal chose it side by side) */
 main h1,main h2,.site2 .intro h1,.site2 .duo--story h3{
-  font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-sec)!important;line-height:1.18!important;letter-spacing:.01em!important}
+  font-family:var(--serif)!important;font-weight:500!important;font-size:var(--t-sec)!important;line-height:1.18!important;letter-spacing:.01em!important}
 /* 3 — card heading: one size */
 main h3,.steps .lbl,.paths .t,.figures .n,main p.eq-more,.cal-h b,.desk a{
-  font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-card)!important;line-height:1.2!important;letter-spacing:.01em!important;text-transform:none!important}
+  font-family:var(--serif)!important;font-weight:500!important;font-size:var(--t-card)!important;line-height:1.2!important;letter-spacing:.01em!important;text-transform:none!important}
 .site2 .duo--story h3{font-size:var(--t-sec)!important;line-height:1.18!important}
 /* 4 — body text: the serif, as the reference site sets its paragraphs in its serif (two fonts: serif for reading, sans for small things) */
 main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub,.site2 .hero .sub,.desk .val,.steps .t,.figures .t,main p.eq-more span{
-  font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-body)!important;line-height:1.38!important;letter-spacing:0!important;text-transform:none!important}
+  font-family:var(--serif)!important;font-weight:500!important;font-size:var(--t-body)!important;line-height:1.38!important;letter-spacing:0!important;text-transform:none!important}
 /* form controls (tick boxes, calendar) are small things: the sans at link size */
 .eq-nd,.cal-g button,.cal-g .dow{font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-link)!important;letter-spacing:0!important;text-transform:none!important}
 /* 5 — link: "Discover more", buttons, the phone call bar — the sans, as the reference site does */
@@ -739,3 +739,18 @@ main > section.panel:not(.strip-sec--exp),main > section.enquire{padding-top:var
 .site2 .intro{padding-bottom:.9rem!important}
 
 .spaces picture{display:block}
+
+/* === SUBPAGE OPENING: one template on every subpage (6 Oct 2026, Vishal: "the hero sections of all the sub pages vary
+   quite a bit in their structuring and sizing ... i want these to all be consistent") ===
+   photo (one 3:2 frame: edge to edge on phones, 786px on laptops) -> small label -> title -> one line -> two buttons */
+:root{--s-hero:1.75rem}
+@media(min-width:821px){:root{--s-hero:2.5rem}}
+.hero--titlefirst{display:flex!important;flex-direction:column;align-items:center;text-align:center;padding-top:0!important;padding-bottom:var(--s-sec)!important}
+.hero--titlefirst .hero-figure{order:0;width:100%;max-width:786px!important;margin:0 auto!important}
+.hero--titlefirst .hero-figure picture{display:block}
+.hero--titlefirst .hero-figure img{display:block;width:100%!important;height:auto!important;aspect-ratio:3/2;object-fit:cover}
+@media(max-width:820px){ .hero--titlefirst .hero-figure{max-width:none!important;width:calc(100% + 2*clamp(1.3rem,2vw,1.55rem));margin-inline:calc(-1*clamp(1.3rem,2vw,1.55rem))!important} }
+.hero--titlefirst .eyebrow{order:1;margin-top:var(--s-hero)!important}
+.hero--titlefirst h1{order:2;max-width:786px!important;margin-inline:auto}
+.hero--titlefirst .sub{order:3;max-width:56ch}
+.hero--titlefirst .hero-cta{order:4;margin-top:1.4rem!important}

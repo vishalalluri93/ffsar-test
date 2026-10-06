@@ -1,11 +1,11 @@
 /* fonts: self-hosted variable WOFF2, latin subset (5 Oct 2026); were loaded from Google Fonts */
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/cormorant-garamond-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
-@font-face{font-family:'Mulish';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/mulish-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/public-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 
 :root{
   --cream:#F1EBDF; --cream-deep:#EDE6D6; --ink:#1E2932; --ink-soft:#3A444E;
   --card:#2F3942; --mist:#6A7480; --gold:#B79A5E; --label:#9C855B; --line:#E1DBCE; --gilt:#A88A50; --err:#9B3B2E;
-  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Mulish',-apple-system,'Segoe UI',sans-serif;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Public Sans',-apple-system,'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -300,7 +300,7 @@ section{padding-block:clamp(2.9rem,4.9vw,4.4rem)}          /* slightly bigger ga
   .navtoggle:checked ~ .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
 
-/* --- doc round 16: home feature-card descriptions in the sans (Mulish) intro font --- */
+/* --- doc round 16: home feature-card descriptions in the sans intro font --- */
 .pair2 .feat .cap .body{font-family:var(--sans);font-size:.82rem;line-height:1.65}
 
 /* --- doc round 17: home small text weight to match the Discover link (600) --- */
@@ -659,8 +659,7 @@ nav a{text-transform:none;letter-spacing:.02em;font-weight:500}
    Aman, phone and laptop alike: label 10.1px caps, card heading 19.6px, body 14px, link 13px; section heading
    24.1px on phones, 31.1px on laptops. Buttons, figures and captions borrow one of the five; nothing else.
    Exceptions: form fields stay 16px (smaller makes iPhones zoom in); header, footer, guides and legal pages. */
-@font-face{font-family:'Public Sans';font-style:normal;font-weight:300 500;font-display:swap;src:url(assets/fonts/public-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
-:root{--lbl-font:'Public Sans',var(--sans);--t-sec:clamp(1.8rem,2.9vw,2.34rem);--t-card:1.475rem;--t-body:.81rem;--t-link:.87rem;--t-lbl:.63rem}
+:root{--lbl-font:var(--sans);--t-sec:clamp(1.8rem,2.9vw,2.34rem);--t-card:1.475rem;--t-body:1.04rem;--t-link:.845rem;--t-lbl:.63rem}
 /* 1 — small label: gold capitals (Public Sans light = the visual match for Aman's regular Whitney) */
 .eyebrow,.eyebrow--strong,.eyebrow--below,.lbl,.occ-line,.site2 .occ-line,.figures .l,main dt,.where dt,.eq .l,.spaces .cap .m,
 .duo .lbl,.feat .cap .lbl,.spaces .cap .lbl,.paths .lbl,.site2 .feat .cap .lbl,.site2 .duo .lbl,.site2 .spaces .cap .lbl,.venues-tall .spaces .cap .lbl,.site2 .intro .eyebrow--strong{
@@ -672,10 +671,12 @@ main h1,main h2,.site2 .intro h1,.site2 .duo--story h3{
 main h3,.steps .lbl,.paths .t,.figures .n,main p.eq-more,.cal-h b,.desk a{
   font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-card)!important;line-height:1.2!important;letter-spacing:.01em!important;text-transform:none!important}
 .site2 .duo--story h3{font-size:var(--t-sec)!important;line-height:1.18!important}
-/* 4 — body text */
-main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub,.site2 .hero .sub,.desk .val,.steps .t,.figures .t,.eq-nd,main p.eq-more span,.cal-g button,.cal-g .dow{
-  font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-body)!important;line-height:1.56!important;letter-spacing:0!important;text-transform:none!important}
-/* 5 — link: "Discover more", buttons, the phone call bar */
+/* 4 — body text: the serif, as Aman sets its paragraphs in Lyon (two fonts: serif for reading, sans for small things) */
+main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub,.site2 .hero .sub,.desk .val,.steps .t,.figures .t,main p.eq-more span{
+  font-family:var(--serif)!important;font-weight:400!important;font-size:var(--t-body)!important;line-height:1.38!important;letter-spacing:0!important;text-transform:none!important}
+/* form controls (tick boxes, calendar) are small things: the sans at link size */
+.eq-nd,.cal-g button,.cal-g .dow{font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-link)!important;letter-spacing:0!important;text-transform:none!important}
+/* 5 — link: "Discover more", buttons, the phone call bar — the sans, as Aman uses Whitney for these */
 .disc,.disc span,.paths .go,.btn,.mbar a{
   font-family:var(--sans)!important;font-weight:400!important;font-size:var(--t-link)!important;letter-spacing:.06em!important;text-transform:none!important}
 /* Home: the four path cards take the card heading, so on phones they stack one per row instead of two squeezed side by side */
@@ -691,3 +692,7 @@ main p,main dd,main li,.feat .cap .body,.duo .body,.spaces .cap .desc,.hero .sub
 .rvi{opacity:0;transition:opacity .7s ease-in-out}      /* photos: fade only, as aman.com */
 .rvi.in{opacity:1}
 @media(prefers-reduced-motion:reduce){.rv,.rvi{opacity:1;transform:none;transition:none}}
+
+/* form buttons and fields take the page's font (browsers otherwise use Arial) */
+button,input,select,textarea{font-family:inherit}
+.eq-btn,.eq-btn span{font-family:var(--sans)!important}

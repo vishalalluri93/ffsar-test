@@ -123,9 +123,10 @@
 })();
 </script><script>
 (function(){
- /* ERP enquiry address. For now Firefox's TEST system, which accepts sends from http://localhost and, from 4 Oct 2026,
-    from the test site https://vishalalluri93.github.io/ffsar-test/ (ERP brief, 3 Oct 2026). Swap in the live address the ERP gives before this goes to production. No key is needed. */
- var CONFIG={endpoint:'https://erp-ivcnrdhpia-el.a.run.app/enquiry'};
+ /* ERP enquiry address (ERP brief, 7 Oct 2026). The LIVE system accepts sends only from https://www.firefoxsar.com and
+    https://firefoxsar.com; everywhere else (the test site, localhost) uses the TEST system. No key is needed. */
+ var LIVE=/^(www\.)?firefoxsar\.com$/.test(location.hostname);
+ var CONFIG={endpoint:LIVE?'https://erp-140059238434.asia-south1.run.app/enquiry':'https://erp-760424351898.asia-south1.run.app/enquiry'};
  var f=document.getElementById('enquiry'); if(!f)return;
  var $=function(id){return document.getElementById(id);};
  var t0=Date.now(), MIN_MS=4000, sending=false;
@@ -185,7 +186,7 @@
 
  function payload(){var p={event_type:type(),contact_name:val('eq-name'),client_name:val('eq-client'),phone:phone(val('eq-phone')),
    email:val('eq-email'),occasion:val('eq-occasion'),event_days:Object.keys(picked).sort(),guests:val('eq-guests')?parseInt(val('eq-guests'),10):'',
-   message:val('eq-message'),source:'Website enquiry',page:location.origin+location.pathname};
+   message:val('eq-message'),page:location.origin+location.pathname};
   Object.keys(p).forEach(function(k){if(p[k]===''||(Array.isArray(p[k])&&!p[k].length))delete p[k];});
   p.hp=$('eq-website').value;return p;}
 
@@ -193,7 +194,9 @@
  function spaced(ph){var m=/^\+91(\d{5})(\d{5})$/.exec(ph);return m?'+91 '+m[1]+' '+m[2]:ph;}
  function done(p){$('eq-done-name').textContent=', '+p.contact_name;$('eq-done-phone').textContent=spaced(p.phone);
   f.hidden=true;var d=$('eq-done');d.hidden=false;d.focus();d.scrollIntoView({block:'center'});}
- function fail(){busy(false);$('eq-status').innerHTML='Something went wrong &mdash; please try again or <a href="tel:+919676716888">call us</a>.';}
+ function fail(msg,later){busy(false);var st=$('eq-status');st.innerHTML=(later?'Too many enquiries from this connection &mdash; please try again later or ':'Something went wrong &mdash; please try again or ')+'<a href="tel:+919676716888">call us</a>.';
+  /* the ERP's own explanation, shown as plain text (ERP brief: show the error to the visitor) */
+  if(msg){var e=document.createElement('span');e.textContent=String(msg).slice(0,200)+' ';st.insertBefore(e,st.firstChild);}}
 
  f.addEventListener('submit',function(e){e.preventDefault();if(sending)return;$('eq-status').textContent='';
   if(!check())return;var p=payload();busy(true);
@@ -201,7 +204,8 @@
    p.ms=Date.now()-t0;
    var ac=window.AbortController?new AbortController():null,to=setTimeout(function(){if(ac)ac.abort();},20000);
    fetch(CONFIG.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p),credentials:'omit',cache:'no-store',signal:ac?ac.signal:undefined})
-    .then(function(r){return r.json();}).then(function(j){clearTimeout(to);if(j&&j.ok===true)done(p);else fail();})
+    .then(function(r){if(r.status===429){clearTimeout(to);fail('',true);return null;}return r.json();})
+    .then(function(j){if(j===null)return;clearTimeout(to);if(j&&j.ok===true)done(p);else fail(j&&j.error);})
     .catch(function(){clearTimeout(to);fail();});
   },Math.max(0,MIN_MS-(Date.now()-t0)));
  });

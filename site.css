@@ -837,7 +837,8 @@ main > section.outing-day:has(+ .strip-sec--exp):not(#_){padding-bottom:var(--s-
 .scrollrail i{background:var(--mist)!important}
 
 
-/* Home, phones: the intro sits evenly between the video and the photo strip — the same 46px gap below the
-   sub-line as above the Moinabad line (7 Oct 2026, Vishal: "on mobile the gap between wedding, corporate, sport and
-   the images below is really small compared to the laptop"). Laptops unchanged. */
-@media(max-width:820px){.p-home.site2 main > .intro:not(#_){padding-bottom:2.55rem!important}}
+/* Home: the intro (Moinabad line + heading; the sub-line was removed 7 Oct 2026) sits evenly between the video and
+   the photo strip — heading to photos equals video to the Moinabad line: 46px phone, 68px laptop (7 Oct 2026, Vishal: "on mobile the gap between wedding, corporate, sport and
+   the images below is really small compared to the laptop"; "maybe 3 lines are too many at the top"). */
+@media(max-width:820px){.p-home.site2 main > .intro:not(#_){padding-bottom:2.68rem!important}}
+@media(min-width:821px){.p-home.site2 main > .intro:not(#_){padding-bottom:3.93rem!important}}

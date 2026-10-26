@@ -24,7 +24,7 @@ p{margin:0;color:var(--ink-soft);font-size:.94rem}
 em{font-style:normal;color:inherit}
 
 /* header */
-header{position:sticky;top:0;z-index:20;background:rgba(241,235,223,.92);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:20;background:rgba(241,235,223,.92);backdrop-filter:saturate(120%) blur(8px)}   /* no line under the header (Vishal, 26 Oct 2026) */
 .bar{display:flex;align-items:center;justify-content:space-between;padding-block:.8rem}
 .brand{display:flex;align-items:center;gap:.6rem}
 .brand .logo{height:34px;width:auto}

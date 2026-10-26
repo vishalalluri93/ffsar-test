@@ -851,3 +851,15 @@ main > section.outing-day:has(+ .strip-sec--exp):not(#_){padding-bottom:var(--s-
   .hero--titlefirst .hero-figure:not(#_){max-width:none!important;width:100%}
   .hero--titlefirst .hero-figure img:not(#_){aspect-ratio:16/9}
 }
+
+/* Header about 20% larger, every element, phone and laptop; Home's video gets space below the header (Vishal, 26 Oct 2026) */
+header .brand .logo{height:41px}
+header .brand .wm{font-size:1.44rem}
+header .brand .wm small{font-size:.58rem}
+header .enq{font-size:.74rem;padding:.6rem 1.2rem}
+header .burger span{width:29px}
+@media(min-width:821px){ header nav a{font-size:1.03rem} }
+/* 821-1060 px (tablets sideways): no room for the larger header — previous sizes kept there */
+@media(min-width:821px) and (max-width:1060px){ header nav a{font-size:.8rem} header .brand .logo{height:34px} header .brand .wm{font-size:1.2rem} header .brand .wm small{font-size:.48rem} header .enq{font-size:.62rem;padding:.5rem 1rem} }
+@media(max-width:820px){ header nav a{font-size:1.14rem} }
+.hero--videoonly{padding-top:var(--s-hero)}

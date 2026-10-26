@@ -882,3 +882,10 @@ header .bar{min-height:104px}
 header nav a{font-weight:400}
 header nav a.active,.site2 header nav a.active{font-weight:600}
 header .enq{font-weight:500}
+/* Logo and name larger; menu page names light (300). Logo's top stays level with the reference A: header 111 px, logo centred on laptops, 12 px top padding on phones (Vishal, 26 Oct 2026) */
+header .brand .logo{height:48px}
+header .brand .wm{font-size:1.7rem}
+header .brand .wm small{font-size:.66rem}
+header .bar{min-height:111px}
+header nav a{font-weight:300}
+@media(min-width:821px) and (max-width:1060px){ header .brand .logo{height:34px} header .brand .wm{font-size:1.2rem} header .brand .wm small{font-size:.48rem} }

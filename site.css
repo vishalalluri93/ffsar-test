@@ -863,3 +863,8 @@ header .burger span{width:29px}
 @media(min-width:821px) and (max-width:1060px){ header nav a{font-size:.8rem} header .brand .logo{height:34px} header .brand .wm{font-size:1.2rem} header .brand .wm small{font-size:.48rem} header .enq{font-size:.62rem;padding:.5rem 1rem} }
 @media(max-width:820px){ header nav a{font-size:1.14rem} }
 .hero--videoonly{padding-top:var(--s-hero)}
+/* Header height and the space above Home's video matched to the reference site, each width to its own measurement (26 Oct 2026, Vishal):
+   header 88 px tall on phones and laptops, contents centred; video top at 153 px on laptops (65 px under the header), flush under it on phones */
+header .bar{min-height:88px;padding-block:0}
+.hero--videoonly{padding-top:65px}
+@media(max-width:820px){ .hero--videoonly{padding-top:0} }
